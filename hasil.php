@@ -1,3 +1,10 @@
+<?php 
+include "koneksi.php";
+$sakit = $_POST['sakit'];
+$guna = $_POST['guna'];
+
+ ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -74,13 +81,46 @@
                 <div class="panel panel-default">
                 <center>
                 <div class="panel panel-heading">
-                    <h2>Tanaman Obat Hutan</h2>
+                    <h2>Hasil Rekomendasi Penyakit <?php echo $sakit ?></h2>
                 </div>
                 <div class="panel-body">
-                <p>Sebelum beralih ke obat dokter, sudah jadi kebiasaan orang-orang Indonesia untuk lebih dulu mencoba “berobat” pakai jamu-jamuan dari tanaman obat. Tanaman obat itu sendiri punya ribuan jenis spesies. Nah dari total 40 ribu macam tanaman obat yang ada di dunia, ternyata hampir 90%-nya berhabitat di Indonesia. Menguntungkan, bukan? Namun begitu, hanya sekitar 9.000 spesies saja yang diduga kuat memiliki khasiat obat, dan bisa Anda tanam sendiri di rumah. </p>
-                </div>
-                <a href="data_tanaman.php" class="btn btn-info">Tanaman Hutan Obat</a>
-                <a href="rekomendasi.php" class="btn btn-info">Rekomendasi Obat Penyakit</a>
+                   <table class="table table-responsive table-hover table-bordered">
+                       <thead>
+                           <tr>
+                               <th>NO</th>
+                               <th>Nama Tumbuhan</th>
+                               <th>Jenis Tumbuhan</th>
+                               <th>Bagian Tumbuhan</th>
+                               <th>Cara Pengolahan</th>
+                               <th>Cara Penggunaan</th>
+                               <th>Khasiat</th>
+                               <th>Qi</th>
+                           </tr>
+                       </thead>
+                       <tbody>
+                           <?php 
+                            $sql = "select * from tumbuhan_obat where khasiat = '$sakit' AND cara_penggunaan = '$guna' ORDER BY pi DESC";
+                            $no  = 1; 
+                            foreach ($dbh->query($sql) as $data):
+                            ?>
+                            <tr>
+                                <td><?php echo $no; ?></td>
+                                <td><a href="wiki_tumbuhan.php?pohon=<?php echo $data['id_tumbuhan'] ?>">
+                                <?php echo $data['nama_tumbuhan'] ?>    
+                                </a></td>
+                                <td><?php echo $data['jenis_tumbuhan'] ?></td>
+                                <td><?php echo $data['bagian_tumbuhan'] ?></td>
+                                <td><?php echo $data['cara_pengolahan'] ?></td>
+                                <td><?php echo $data['cara_penggunaan'] ?></td>
+                                <td><?php echo $data['khasiat'] ?></td>
+                                <td><?php echo $data['pi'];?>%</td>
+                            </tr>
+                            <?php
+                        $no++;  
+                        endforeach;
+                         ?>
+                       </tbody>
+                   </table>
                 <br><br><br>
                 </center>
                 </div>

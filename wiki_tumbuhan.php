@@ -1,3 +1,9 @@
+<?php 
+include 'koneksi.php';
+$id = $_GET['pohon'];
+$query=mysqli_query($dbh,"select * from tumbuhan_obat where id_tumbuhan='$id'");
+$data=mysqli_fetch_array($query);
+ ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -75,14 +81,39 @@
                 <center>
                 <div class="panel panel-heading">
                     <h2>Tanaman Obat Hutan</h2>
+                    <h2><?php echo $data['nama_tumbuhan']; ?></h2>
                 </div>
                 <div class="panel-body">
-                <p>Sebelum beralih ke obat dokter, sudah jadi kebiasaan orang-orang Indonesia untuk lebih dulu mencoba “berobat” pakai jamu-jamuan dari tanaman obat. Tanaman obat itu sendiri punya ribuan jenis spesies. Nah dari total 40 ribu macam tanaman obat yang ada di dunia, ternyata hampir 90%-nya berhabitat di Indonesia. Menguntungkan, bukan? Namun begitu, hanya sekitar 9.000 spesies saja yang diduga kuat memiliki khasiat obat, dan bisa Anda tanam sendiri di rumah. </p>
+            	<img src="gambar/<?php 
+                        if(empty($data['gambar'])){
+                            echo "daun-kartun-png-1.png";
+                        }else{
+                            echo $data['gambar']; 
+                        
+                        }?>"
+                        class="img-thumbnail" width="300" heigth="300" ></center>
+                <div class="panel-body">
+                    <p>
+                    <strong><?php echo $data['nama_tumbuhan']; ?></strong></p>
+                <p>Dapat menyembuhkan <strong><?php echo $data['khasiat']; ?></strong>
+                Bagian tumbuhan yang digunakan adalah <strong><?php echo $data['bagian_tumbuhan']; ?></strong>
+                dengan cara pengunaan <strong><?php echo $data['cara_penggunaan']; ?></strong>
+                dan diolah dengan cara <strong><?php echo $data['cara_pengolahan']; ?></strong></p>
+                
                 </div>
-                <a href="data_tanaman.php" class="btn btn-info">Tanaman Hutan Obat</a>
-                <a href="rekomendasi.php" class="btn btn-info">Rekomendasi Obat Penyakit</a>
+                <div class="panel-heading">
+                <p><strong>Cara Penggunaan</strong></p>     
+                </div>
+                <div class="panel-body">
+                    <p>
+                    <?php echo $data['resep'] ?>         
+                    </p>
+                </div>
+                
+                
+                </div>
                 <br><br><br>
-                </center>
+                
                 </div>
                 
 

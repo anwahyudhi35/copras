@@ -1,3 +1,7 @@
+<?php 
+include "koneksi.php";
+ ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -74,19 +78,56 @@
                 <div class="panel panel-default">
                 <center>
                 <div class="panel panel-heading">
-                    <h2>Tanaman Obat Hutan</h2>
+                    <h2>Rekomendasi Tanaman Obat Hutan</h2>
                 </div>
                 <div class="panel-body">
-                <p>Sebelum beralih ke obat dokter, sudah jadi kebiasaan orang-orang Indonesia untuk lebih dulu mencoba “berobat” pakai jamu-jamuan dari tanaman obat. Tanaman obat itu sendiri punya ribuan jenis spesies. Nah dari total 40 ribu macam tanaman obat yang ada di dunia, ternyata hampir 90%-nya berhabitat di Indonesia. Menguntungkan, bukan? Namun begitu, hanya sekitar 9.000 spesies saja yang diduga kuat memiliki khasiat obat, dan bisa Anda tanam sendiri di rumah. </p>
+                <p>Disini anda akan mengetahui tanaman hutan yang direkomendasikan berdasarkan penyakit anda!</p>
+            
+                <div class="container-fluid">
+                    <form class="form" action="hasil.php" method="POST">
+                        <div class="form-group">
+                            <label>Nama Penyakit:</label>
+                            <select name="sakit" class="form-control">
+                                <?php 
+                                    $sql = "SELECT DISTINCT khasiat FROM tumbuhan_obat";
+                                    
+                                    foreach ($dbh->query($sql) as $data) :
+                                ?>
+                                <option value="<?php echo $data['khasiat']; ?>"><?php echo $data['khasiat']; ?></option>
+                                <?php
+                                endforeach;
+                                 ?>
+                            </select>
+                            
+                        </div>
+
+                        <div class="form-group">
+                            <label>Cara Penggunaan:</label>
+                            <select name="guna" class="form-control">
+                                <?php 
+                                    $sql1 = "SELECT DISTINCT cara_penggunaan FROM tumbuhan_obat";
+                                     
+                                    foreach ($dbh->query($sql1) as $data1) :
+                                ?>
+                                <option value="<?php echo $data1['cara_penggunaan']; ?>"><?php echo $data1['cara_penggunaan']; ?></option>
+                                <?php
+                                endforeach;
+                                 ?>
+                            </select>
+                            
+                        </div>
+
+                    <div class="form-group">
+                            <input type="submit" required name="hasil" value = "Hasil" class="btn btn-success btn-fill" onclick="return confirm('Apa anda yakin dengan  data anda?');">
                 </div>
-                <a href="data_tanaman.php" class="btn btn-info">Tanaman Hutan Obat</a>
-                <a href="rekomendasi.php" class="btn btn-info">Rekomendasi Obat Penyakit</a>
-                <br><br><br>
-                </center>
+                    </form>
+                </div>
+                </div>
                 </div>
                 
 
                 </div>
+                </center>
         </div>
 
 

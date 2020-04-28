@@ -1,3 +1,9 @@
+<?php 
+include "../koneksi.php";
+session_start();
+ ?>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,9 +14,9 @@
         <title>SISTEM PENDUKUNG KEPUTUSAN PEMILIHAN TUMBUHAN HUTAN BERKHASIAT OBAT UNTUK SISTEM PENCERNAAN  </title>
 
          <!-- Bootstrap CSS CDN -->
-        <link rel="stylesheet" href="asset/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="..\asset\bootstrap\css\bootstrap.css">
         <!-- Our Custom CSS -->
-        <link rel="stylesheet" href="asset/index.css">
+        <link rel="stylesheet" href="../asset/index.css">
     </head>
     <body>
 
@@ -20,9 +26,8 @@
             <!-- Sidebar Holder -->
             <nav id="sidebar">
                 <div class="sidebar-header">
-                    <a href="index.php"><center>
-                    <h3>SPK PEMILIHAN TUMBUHAN OBAT HUTAN UNTUK SISTEM PENCERNAAN  </h3>    
-                    </center>
+                    <a href="index-admin.php">
+                    <h3>SPK PEMILIHAN TUMBUHAN OBAT HUTAN UNTUK SISTEM PENCERNAAN  </h3>
                         <strong>
                             <i class="glyphicon glyphicon-home"></i>
                         </a></strong>
@@ -30,18 +35,14 @@
 
                 <ul class="list-unstyled components">
                     <li>
-                        <a href="data_tanaman.php">
-                            <center>
-                            Data Tanaman Obat    
-                            </center>
+                        <a href="tanaman/data-tanaman-admin.php">
+                            <i class="glyphicon glyphicon-briefcase"></i>
+                            Data Tanaman Obat
                         </a>
-                    </li>
-                    <li>
-                      <a href="rekomendasi.php" aria-expanded="false">
-                            <center>
-                            Rekomendasi Tanaman Obat    
-                            </center>
-                            </a>
+                        <a href="perhitungan/hitungan.php" aria-expanded="false">
+                            <i class="glyphicon glyphicon-duplicate"></i>
+                            Perhitungan
+                        </a>
                     </li>
 
                 <ul class="list-unstyled CTAs">
@@ -67,24 +68,39 @@
                         </div>
 
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Masuk</a></li>
+                            <p></p><div class="dropdown"> <!-- warna dropdown menu diubah-->
+                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                                    <span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['nama']; ?>
+                                <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    
+                                    <li><a href="logout.php">Log out</a></li>
+                                 </ul>
+                            </div>
                         </ul>
                     </div>
                 </nav>
                 <div class="panel panel-default">
                 <center>
                 <div class="panel panel-heading">
-                    <h2>Tanaman Obat Hutan</h2>
+                    <h2>Halaman Admin</h2>
+                    <h3>Selamat datang, <?php echo $_SESSION['nama']; ?></h3>
                 </div>
                 <div class="panel-body">
-                <p>Sebelum beralih ke obat dokter, sudah jadi kebiasaan orang-orang Indonesia untuk lebih dulu mencoba “berobat” pakai jamu-jamuan dari tanaman obat. Tanaman obat itu sendiri punya ribuan jenis spesies. Nah dari total 40 ribu macam tanaman obat yang ada di dunia, ternyata hampir 90%-nya berhabitat di Indonesia. Menguntungkan, bukan? Namun begitu, hanya sekitar 9.000 spesies saja yang diduga kuat memiliki khasiat obat, dan bisa Anda tanam sendiri di rumah. </p>
-                </div>
-                <a href="data_tanaman.php" class="btn btn-info">Tanaman Hutan Obat</a>
-                <a href="rekomendasi.php" class="btn btn-info">Rekomendasi Obat Penyakit</a>
-                <br><br><br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>
+                <a href="tanaman/data-tanaman-admin.php" class="btn btn-success">Data Tanaman Obat</a>
+                <a href="perhitungan/hitungan.php" class="btn btn-success">Hasil Perhitungan</a>
+                <br><br>
                 </center>
-                </div>
                 
+                </div>
+
 
                 </div>
         </div>

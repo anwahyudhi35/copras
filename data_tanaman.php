@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<?php 
+include "koneksi.php";
+?>
+
 <html>
     <head>
         <meta charset="utf-8">
@@ -18,7 +21,7 @@
 
         <div class="wrapper">
             <!-- Sidebar Holder -->
-            <nav id="sidebar">
+          <nav id="sidebar">
                 <div class="sidebar-header">
                     <a href="index.php"><center>
                     <h3>SPK PEMILIHAN TUMBUHAN OBAT HUTAN UNTUK SISTEM PENCERNAAN  </h3>    
@@ -76,12 +79,66 @@
                 <div class="panel panel-heading">
                     <h2>Tanaman Obat Hutan</h2>
                 </div>
-                <div class="panel-body">
-                <p>Sebelum beralih ke obat dokter, sudah jadi kebiasaan orang-orang Indonesia untuk lebih dulu mencoba “berobat” pakai jamu-jamuan dari tanaman obat. Tanaman obat itu sendiri punya ribuan jenis spesies. Nah dari total 40 ribu macam tanaman obat yang ada di dunia, ternyata hampir 90%-nya berhabitat di Indonesia. Menguntungkan, bukan? Namun begitu, hanya sekitar 9.000 spesies saja yang diduga kuat memiliki khasiat obat, dan bisa Anda tanam sendiri di rumah. </p>
+                <div class="panel panel-body">
+                 <div class="row">
+                  <?php 
+
+                  $halaman = 24;
+                  $page = isset($_GET['ke']) ? (int)$_GET['ke'] : 1;
+                  $mulai = ($page>1) ? ($page * $halaman) - $halaman : 0;
+
+
+                  $sql = "select * from tumbuhan_obat";
+
+                  $hasil = mysqli_query($dbh, $sql);
+                  $total = mysqli_num_rows($hasil);
+                  $tampil = ceil($total/$halaman);
+                  
+                  $sqlu = "select * from tumbuhan_obat LIMIT $mulai, $halaman" ;
+                  $query = mysqli_query($dbh, $sqlu) or die(mysqli_error($dbh));
+
+                 while ($data = mysqli_fetch_assoc($query)) {              
+                   
+
+                  $olah = "select COUNT(cara_pengolahan) from tumbuhan_obat where khasiat = 'maag' group by cara_pengolahan";
+
+                   ?>
+                   <!-- seragamkan ukurannya -->
+
+
+                  <div class="col-md-2">
+                    <div class="thumbnail">
+                      <!-- link berdasarkan nama tapi ga buat file baru -->
+                      <a href="wiki_tumbuhan.php?pohon=<?php echo $data['id_tumbuhan'] ?>">
+                        <img src="gambar/<?php 
+                        if(empty($data['gambar'])){
+                            echo "daun-kartun-png-1.png";
+                        }else{
+                            echo $data['gambar']; 
+                        
+                        }?>"
+                        class="img-thumbnail" width="300" heigth="300" >
+                        <div class="caption">
+                          <p>
+                           <?php echo $data['nama_tumbuhan']; ?> 
+                          </p>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <?php 
+                 } ?>
                 </div>
-                <a href="data_tanaman.php" class="btn btn-info">Tanaman Hutan Obat</a>
-                <a href="rekomendasi.php" class="btn btn-info">Rekomendasi Obat Penyakit</a>
-                <br><br><br>
+                <div class="pagination">
+                <?php for ($i=1; $i<=$tampil ; $i++){ ?>
+                  <li><a href="?ke=<?php echo $i; ?>"><?php echo $i; ?></a>
+               </li>
+                
+                <?php } ?>
+                                    
+                </div>
+                    
+
                 </center>
                 </div>
                 

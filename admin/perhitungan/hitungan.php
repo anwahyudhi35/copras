@@ -188,7 +188,7 @@ session_start();
                                                 echo $ahp3[2];
                                              ?></td>
                                             <td><?php 
-                                                $ahp3[3]=0.25;
+                                                  $ahp3[3]=0.25;
                                                 echo $ahp3[3];
                                              ?></td>
                                         </tr>
@@ -227,9 +227,7 @@ session_start();
                                             $tahp[3] = $ahp1[3]+$ahp2[3]+$ahp3[3]+$ahp4[3];
                                             echo $tahp[3]; ?></td>
                                         </tr>
-                                    </tbody>
-
-                                    
+                                    </tbody>                                    
                                 </table>
                                 <h3>Matriks Normalisasi</h3>
                                     <table class="table table-hovered table-bordered">
@@ -382,6 +380,7 @@ session_start();
                                             </tr>
                                         </tbody>
                                     </table>
+
                                 <h3><center>COPRAS</center></h3>
                                 <hr>
                                 <h4>Matriks</h4>
@@ -463,7 +462,7 @@ session_start();
         $k3[$no] = $diare13/$total;
 
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
+    }elseif ($datas['bagian_tumbuhan'] == "Kulit Buah") {
         echo $diare14/$total;
         $k3[$no] = $diare14/$total;
 
@@ -516,19 +515,19 @@ session_start();
         $k4[$no] = $diare22/$total;
     }elseif ($datas['jenis_tumbuhan'] == "Liana") {
         echo $diare23/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare23/$total;
     }
     elseif ($datas['jenis_tumbuhan'] == "Herba") {
         echo $diare24/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare24/$total;
     }
     elseif ($datas['jenis_tumbuhan'] == "Perdu") {
         echo $diare25/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare25/$total;
     }
     elseif ($datas['jenis_tumbuhan'] == "Semak") {
         echo $diare26/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare26/$total;
     }else{
         echo 0;
         $k4[$no] = 0;
@@ -548,10 +547,10 @@ session_start();
                                             $k211 = array_sum($k2) ;
                                             echo $k211 ; ?></td>
                                             <td><?php 
-                                            $k311 = array_sum($k1) ;
+                                            $k311 = array_sum($k3) ;
                                             echo $k311 ; ?></td>
                                             <td><?php 
-                                            $k411 = array_sum($k1) ;
+                                            $k411 = array_sum($k4) ;
                                             echo $k411 ; ?></td>
                                         </tr>
                                        
@@ -595,33 +594,33 @@ session_start();
                                           }
                                           else{
         
-        $k11[$not]=$k1[$not]/$k111;
-    echo $k11[$not];
+                                          $k11[$not]=$k1[$not]/$k111;
+                                          echo $k11[$not];
 
-    }?>
+                                            }?>
                                               </td>
 
                                               
                                                   <td><?php
                                             if ($datas['cara_penggunaan'] == 'Diminum' ) {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                                 
                                             }elseif ($datas['cara_penggunaan'] == "Dimakan") {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                             }elseif ($datas['cara_penggunaan'] == "Dioles") {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                             }elseif ($datas['cara_penggunaan'] == "Dikumur") {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                             }else{
-        $k21[$not]=$k1[$not]/$k211;
+        $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
     }?></td>
@@ -629,69 +628,69 @@ session_start();
                                               <td>
                                                 <?php 
                                                 if ($datas['bagian_tumbuhan'] == "Akar" ) {
-        $k31[$not]=$k1[$not]/$k311;
+        $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     }elseif ($datas['bagian_tumbuhan'] == "Umbi") {
-     $k31[$not]=$k1[$not]/$k311;
+     $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
        
     }elseif ($datas['bagian_tumbuhan'] == "Semua") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
-    $k31[$not]=$k1[$not]/$k311;
+    }elseif ($datas['bagian_tumbuhan'] == "Kulit Buah") {
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Daun") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Batang") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Getah") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Bunga") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Biji") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Buah") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
         
     }else{
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     }
@@ -701,35 +700,36 @@ session_start();
                                             <td>
                                                 <?php 
     if ($datas['jenis_tumbuhan'] == "Pohon") {
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     
     }elseif ($datas['jenis_tumbuhan'] == "Liana") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }
     elseif ($datas['jenis_tumbuhan'] == "Herba") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
+        echo $k41[$not];
 
-                                                echo $k41[$not];
+                                                
     }
     elseif ($datas['jenis_tumbuhan'] == "Perdu") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }
     elseif ($datas['jenis_tumbuhan'] == "Semak") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }else{
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }
@@ -881,9 +881,7 @@ $c3[$not] =  $k31[$not]*$bobot3;
                     } ?>
                                 
                             </tbody>
-
-
-</table>
+                            </table>
                             </div>
                             <!-- Hitungan MAAG -->
                             <div id="maag" class="tab-pane">
@@ -1289,19 +1287,19 @@ $c3[$not] =  $k31[$not]*$bobot3;
         $k4[$no] = $diare22/$total;
     }elseif ($datas['jenis_tumbuhan'] == "Liana") {
         echo $diare23/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare23/$total;
     }
     elseif ($datas['jenis_tumbuhan'] == "Herba") {
         echo $diare24/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare24/$total;
     }
     elseif ($datas['jenis_tumbuhan'] == "Perdu") {
         echo $diare25/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare25/$total;
     }
     elseif ($datas['jenis_tumbuhan'] == "Semak") {
         echo $diare26/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare26/$total;
     }else{
         echo 0;
         $k4[$no] = 0;
@@ -1321,10 +1319,10 @@ $c3[$not] =  $k31[$not]*$bobot3;
                                             $k211 = array_sum($k2) ;
                                             echo $k211 ; ?></td>
                                             <td><?php 
-                                            $k311 = array_sum($k1) ;
+                                            $k311 = array_sum($k3) ;
                                             echo $k311 ; ?></td>
                                             <td><?php 
-                                            $k411 = array_sum($k1) ;
+                                            $k411 = array_sum($k4) ;
                                             echo $k411 ; ?></td>
                                         </tr>
                                        
@@ -1375,24 +1373,24 @@ $c3[$not] =  $k31[$not]*$bobot3;
                                               
                                                   <td><?php
                                             if ($datas['cara_penggunaan'] == 'Diminum' ) {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                                 
                                             }elseif ($datas['cara_penggunaan'] == "Dimakan") {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                             }elseif ($datas['cara_penggunaan'] == "Dioles") {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                             }elseif ($datas['cara_penggunaan'] == "Dikumur") {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                             }else{
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
     }?></td>
@@ -1404,65 +1402,65 @@ $c3[$not] =  $k31[$not]*$bobot3;
 
                                                 echo $k31[$not];
     }elseif ($datas['bagian_tumbuhan'] == "Umbi") {
-     $k31[$not]=$k1[$not]/$k311;
+     $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
        
     }elseif ($datas['bagian_tumbuhan'] == "Semua") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Daun") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Batang") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Getah") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Bunga") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Biji") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Buah") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
         
     }else{
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     }
@@ -1472,35 +1470,35 @@ $c3[$not] =  $k31[$not]*$bobot3;
                                             <td>
                                                 <?php 
     if ($datas['jenis_tumbuhan'] == "Pohon") {
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     
     }elseif ($datas['jenis_tumbuhan'] == "Liana") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }
     elseif ($datas['jenis_tumbuhan'] == "Herba") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }
     elseif ($datas['jenis_tumbuhan'] == "Perdu") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }
     elseif ($datas['jenis_tumbuhan'] == "Semak") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }else{
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }
@@ -1583,7 +1581,7 @@ $c3[$not] =  $k31[$not]*$bobot3;
      $c3[$not] =  $k31[$not]*$bobot3;
     }elseif ($datas['bagian_tumbuhan'] == "Semua") {
         $c3[$not] =  $k31[$not]*$bobot3;
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
+    }elseif ($datas['bagian_tumbuhan'] == "Kulit Buah") {
     $c3[$not] =  $k31[$not]*$bobot3;
         
     }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
@@ -2060,19 +2058,19 @@ $c3[$not] =  $k31[$not]*$bobot3;
         $k4[$no] = $diare22/$total;
     }elseif ($datas['jenis_tumbuhan'] == "Liana") {
         echo $diare23/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare23/$total;
     }
     elseif ($datas['jenis_tumbuhan'] == "Herba") {
         echo $diare24/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare24/$total;
     }
     elseif ($datas['jenis_tumbuhan'] == "Perdu") {
         echo $diare25/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare25/$total;
     }
     elseif ($datas['jenis_tumbuhan'] == "Semak") {
         echo $diare26/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare26/$total;
     }else{
         echo 0;
         $k4[$no] = 0;
@@ -2092,10 +2090,10 @@ $c3[$not] =  $k31[$not]*$bobot3;
                                             $k211 = array_sum($k2) ;
                                             echo $k211 ; ?></td>
                                             <td><?php 
-                                            $k311 = array_sum($k1) ;
+                                            $k311 = array_sum($k3) ;
                                             echo $k311 ; ?></td>
                                             <td><?php 
-                                            $k411 = array_sum($k1) ;
+                                            $k411 = array_sum($k4) ;
                                             echo $k411 ; ?></td>
                                         </tr>
                                        
@@ -2148,93 +2146,93 @@ $c3[$not] =  $k31[$not]*$bobot3;
                                               
                                                   <td><?php
                                             if ($datas['cara_penggunaan'] == 'Diminum' ) {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                                 
                                             }elseif ($datas['cara_penggunaan'] == "Dimakan") {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                             }elseif ($datas['cara_penggunaan'] == "Dioles") {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                             }elseif ($datas['cara_penggunaan'] == "Dikumur") {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                             }else{
-      $k21[$not]=$k1[$not]/$k211;
+      $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];  }?></td>
 
                                               <td>
                                                 <?php 
                                                 if ($datas['bagian_tumbuhan'] == "Akar" ) {
-        $k31[$not]=$k1[$not]/$k311;
+        $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     }elseif ($datas['bagian_tumbuhan'] == "Umbi") {
-     $k31[$not]=$k1[$not]/$k311;
+     $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
        
     }elseif ($datas['bagian_tumbuhan'] == "Semua") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
-    $k31[$not]=$k1[$not]/$k311;
+    }elseif ($datas['bagian_tumbuhan'] == "Kulit Buah") {
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
-    }elseif ($datas['bagian_tumbuhan'] == "Daun") {
-    $k31[$not]=$k1[$not]/$k311;
+    }elseif ($datas['bagian_tumbuhan'] == "Daun") { 
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Batang") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Getah") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Bunga") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Biji") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Buah") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
         
     }else{
-  $k31[$not]=$k1[$not]/$k311;
+  $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
      }
@@ -2244,35 +2242,35 @@ $c3[$not] =  $k31[$not]*$bobot3;
                                             <td>
                                                 <?php 
     if ($datas['jenis_tumbuhan'] == "Pohon") {
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     
     }elseif ($datas['jenis_tumbuhan'] == "Liana") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }
     elseif ($datas['jenis_tumbuhan'] == "Herba") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }
     elseif ($datas['jenis_tumbuhan'] == "Perdu") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }
     elseif ($datas['jenis_tumbuhan'] == "Semak") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }else{
-       $k41[$not]=$k1[$not]/$k411;
+       $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
       }
@@ -2834,19 +2832,19 @@ $c3[$not] =  $k31[$not]*$bobot3;
         $k4[$no] = $diare22/$total;
     }elseif ($datas['jenis_tumbuhan'] == "Liana") {
         echo $diare23/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare23/$total;
     }
     elseif ($datas['jenis_tumbuhan'] == "Herba") {
         echo $diare24/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare24/$total;
     }
     elseif ($datas['jenis_tumbuhan'] == "perdu" or $datas['jenis_tumbuhan'] == "Perdu") {
         echo $diare25/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare25/$total;
     }
     elseif ($datas['jenis_tumbuhan'] == "Semak") {
         echo $diare26/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare26/$total;
     }else{
         echo 0;
         $k4[$no] = 0;
@@ -2866,10 +2864,10 @@ $c3[$not] =  $k31[$not]*$bobot3;
                                             $k211 = array_sum($k2) ;
                                             echo $k211 ; ?></td>
                                             <td><?php 
-                                            $k311 = array_sum($k1) ;
+                                            $k311 = array_sum($k3) ;
                                             echo $k311 ; ?></td>
                                             <td><?php 
-                                            $k411 = array_sum($k1) ;
+                                            $k411 = array_sum($k4) ;
                                             echo $k411 ; ?></td>
                                         </tr>
                                        
@@ -2921,24 +2919,24 @@ $c3[$not] =  $k31[$not]*$bobot3;
                                               
                                                   <td><?php
                                             if ($datas['cara_penggunaan'] == 'Diminum' ) {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                                 
                                             }elseif ($datas['cara_penggunaan'] == "Dimakan") {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                             }elseif ($datas['cara_penggunaan'] == "Dioles") {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                             }elseif ($datas['cara_penggunaan'] == "Dikumur") {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                             }else{
-       $k21[$not]=$k1[$not]/$k211;
+       $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                             }?></td>
@@ -2946,69 +2944,69 @@ $c3[$not] =  $k31[$not]*$bobot3;
                                               <td>
                                                 <?php 
                                                 if ($datas['bagian_tumbuhan'] == "Akar" ) {
-        $k31[$not]=$k1[$not]/$k311;
+        $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     }elseif ($datas['bagian_tumbuhan'] == "Umbi") {
-     $k31[$not]=$k1[$not]/$k311;
+     $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
        
     }elseif ($datas['bagian_tumbuhan'] == "Semua") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Daun") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Batang") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Getah") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Bunga") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Biji") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Buah") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
         
     }else{
-     $k31[$not]=$k1[$not]/$k311;
+     $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
         
@@ -3019,35 +3017,35 @@ $c3[$not] =  $k31[$not]*$bobot3;
                                             <td>
                                                 <?php 
     if ($datas['jenis_tumbuhan'] == "Pohon") {
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     
     }elseif ($datas['jenis_tumbuhan'] == "Liana") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }
     elseif ($datas['jenis_tumbuhan'] == "Herba") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }
     elseif ($datas['jenis_tumbuhan'] == "Perdu") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }
     elseif ($datas['jenis_tumbuhan'] == "Semak") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }else{
-     $k41[$not]=$k1[$not]/$k411;
+     $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
        }
@@ -3608,19 +3606,19 @@ $c3[$not] =  $k31[$not]*$bobot3;
         $k4[$no] = $diare22/$total;
     }elseif ($datas['jenis_tumbuhan'] == "Liana") {
         echo $diare23/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare23/$total;
     }
     elseif ($datas['jenis_tumbuhan'] == "Herba") {
         echo $diare24/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare24/$total;
     }
     elseif ($datas['jenis_tumbuhan'] == "perdu" or $datas['jenis_tumbuhan'] == "Perdu") {
         echo $diare25/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare25/$total;
     }
     elseif ($datas['jenis_tumbuhan'] == "Semak") {
         echo $diare26/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare26/$total;
     }else{
         echo 0;
         $k4[$no] = 0;
@@ -3640,10 +3638,10 @@ $c3[$not] =  $k31[$not]*$bobot3;
                                             $k211 = array_sum($k2) ;
                                             echo $k211 ; ?></td>
                                             <td><?php 
-                                            $k311 = array_sum($k1) ;
+                                            $k311 = array_sum($k3) ;
                                             echo $k311 ; ?></td>
                                             <td><?php 
-                                            $k411 = array_sum($k1) ;
+                                            $k411 = array_sum($k4) ;
                                             echo $k411 ; ?></td>
                                         </tr>
                                        
@@ -3695,24 +3693,24 @@ $c3[$not] =  $k31[$not]*$bobot3;
                                               
                                                   <td><?php
                                             if ($datas['cara_penggunaan'] == 'Diminum' ) {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                                 
                                             }elseif ($datas['cara_penggunaan'] == "Dimakan") {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                             }elseif ($datas['cara_penggunaan'] == "Dioles") {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                             }elseif ($datas['cara_penggunaan'] == "Dikumur") {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                             }else{
-          $k21[$not]=$k1[$not]/$k211;
+          $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
     }?></td>
@@ -3720,69 +3718,69 @@ $c3[$not] =  $k31[$not]*$bobot3;
                                               <td>
                                                 <?php 
                                                 if ($datas['bagian_tumbuhan'] == "Akar" ) {
-        $k31[$not]=$k1[$not]/$k311;
+        $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     }elseif ($datas['bagian_tumbuhan'] == "Umbi") {
-     $k31[$not]=$k1[$not]/$k311;
+     $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
        
     }elseif ($datas['bagian_tumbuhan'] == "Semua") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Daun") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Batang") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Getah") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Bunga") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Biji") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Buah") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
         
     }else{
-     $k31[$not]=$k1[$not]/$k311;
+     $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
         
@@ -3793,35 +3791,35 @@ $c3[$not] =  $k31[$not]*$bobot3;
                                             <td>
                                                 <?php 
     if ($datas['jenis_tumbuhan'] == "Pohon") {
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     
     }elseif ($datas['jenis_tumbuhan'] == "Liana") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }
     elseif ($datas['jenis_tumbuhan'] == "Herba") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }
     elseif ($datas['jenis_tumbuhan'] == "Perdu") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }
     elseif ($datas['jenis_tumbuhan'] == "Semak") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }else{
-           $k41[$not]=$k1[$not]/$k411;
+           $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }
@@ -4383,22 +4381,22 @@ $c3[$not] =  $k31[$not]*$bobot3;
                                                 <?php 
     if ($datas['jenis_tumbuhan'] == "Pohon") {
         echo $diare22/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare23/$total;
     }elseif ($datas['jenis_tumbuhan'] == "Liana") {
         echo $diare23/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare24/$total;
     }
     elseif ($datas['jenis_tumbuhan'] == "Herba") {
         echo $diare24/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare25/$total;
     }
     elseif ($datas['jenis_tumbuhan'] == "perdu" or $datas['jenis_tumbuhan'] == "Perdu") {
         echo $diare25/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare26/$total;
     }
     elseif ($datas['jenis_tumbuhan'] == "Semak") {
         echo $diare26/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare27/$total;
     }else{
         echo 0;
         $k4[$no] = 0;
@@ -4419,10 +4417,10 @@ $c3[$not] =  $k31[$not]*$bobot3;
                                             $k211 = array_sum($k2) ;
                                             echo $k211 ; ?></td>
                                             <td><?php 
-                                            $k311 = array_sum($k1) ;
+                                            $k311 = array_sum($k3) ;
                                             echo $k311 ; ?></td>
                                             <td><?php 
-                                            $k411 = array_sum($k1) ;
+                                            $k411 = array_sum($k4) ;
                                             echo $k411 ; ?></td>
                                         </tr>
                                        
@@ -4473,24 +4471,24 @@ $c3[$not] =  $k31[$not]*$bobot3;
                                               
                                                   <td><?php
                                             if ($datas['cara_penggunaan'] == 'Diminum' ) {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                                 
                                             }elseif ($datas['cara_penggunaan'] == "Dimakan") {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                             }elseif ($datas['cara_penggunaan'] == "Dioles") {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                             }elseif ($datas['cara_penggunaan'] == "Dikumur") {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                             }else{
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                                 
@@ -4499,69 +4497,69 @@ $c3[$not] =  $k31[$not]*$bobot3;
                                               <td>
                                                 <?php 
                                                 if ($datas['bagian_tumbuhan'] == "Akar" ) {
-        $k31[$not]=$k1[$not]/$k311;
+        $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     }elseif ($datas['bagian_tumbuhan'] == "Umbi") {
-     $k31[$not]=$k1[$not]/$k311;
+     $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
        
     }elseif ($datas['bagian_tumbuhan'] == "Semua") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Daun") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Batang") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Getah") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Bunga") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Biji") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Buah") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
         
     }else{
-     $k31[$not]=$k1[$not]/$k311;
+     $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
        
@@ -4572,35 +4570,35 @@ $c3[$not] =  $k31[$not]*$bobot3;
                                             <td>
                                                 <?php 
     if ($datas['jenis_tumbuhan'] == "Pohon") {
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     
     }elseif ($datas['jenis_tumbuhan'] == "Liana") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }
     elseif ($datas['jenis_tumbuhan'] == "Herba") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }
     elseif ($datas['jenis_tumbuhan'] == "Perdu") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }
     elseif ($datas['jenis_tumbuhan'] == "Semak") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }else{
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }
@@ -5164,19 +5162,19 @@ $c4[$not] =  $k41[$not]*$bobot4;
         $k4[$no] = $diare22/$total;
     }elseif ($datas['jenis_tumbuhan'] == "Liana") {
         echo $diare23/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare23/$total;
     }
     elseif ($datas['jenis_tumbuhan'] == "Herba") {
         echo $diare24/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare24/$total;
     }
     elseif ($datas['jenis_tumbuhan'] == "perdu" or $datas['jenis_tumbuhan'] == "Perdu") {
         echo $diare25/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare25/$total;
     }
     elseif ($datas['jenis_tumbuhan'] == "Semak") {
         echo $diare26/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare26/$total;
     }else{
         $k4[$no] = 0;
         echo $k4[$no];
@@ -5196,10 +5194,10 @@ $c4[$not] =  $k41[$not]*$bobot4;
                                             $k211 = array_sum($k2) ;
                                             echo $k211 ; ?></td>
                                             <td><?php 
-                                            $k311 = array_sum($k1) ;
+                                            $k311 = array_sum($k3) ;
                                             echo $k311 ; ?></td>
                                             <td><?php 
-                                            $k411 = array_sum($k1) ;
+                                            $k411 = array_sum($k4) ;
                                             echo $k411 ; ?></td>
                                         </tr>
                                        
@@ -5251,24 +5249,24 @@ $c4[$not] =  $k41[$not]*$bobot4;
                                               
                                                   <td><?php
                                             if ($datas['cara_penggunaan'] == 'Diminum' ) {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                                 
                                             }elseif ($datas['cara_penggunaan'] == "Dimakan") {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                             }elseif ($datas['cara_penggunaan'] == "Dioles") {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                             }elseif ($datas['cara_penggunaan'] == "Dikumur") {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                             }else{
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                                 
@@ -5277,69 +5275,69 @@ $c4[$not] =  $k41[$not]*$bobot4;
                                               <td>
                                                 <?php 
                                                 if ($datas['bagian_tumbuhan'] == "Akar" ) {
-        $k31[$not]=$k1[$not]/$k311;
+        $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     }elseif ($datas['bagian_tumbuhan'] == "Umbi") {
-     $k31[$not]=$k1[$not]/$k311;
+     $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
        
     }elseif ($datas['bagian_tumbuhan'] == "Semua") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Daun") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Batang") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Getah") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Bunga") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Biji") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Buah") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
         
     }else{
-        $k31[$not]=$k1[$not]/$k311;
+        $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];    
     }
@@ -5349,35 +5347,35 @@ $c4[$not] =  $k41[$not]*$bobot4;
                                             <td>
                                                 <?php 
     if ($datas['jenis_tumbuhan'] == "Pohon") {
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     
     }elseif ($datas['jenis_tumbuhan'] == "Liana") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }
     elseif ($datas['jenis_tumbuhan'] == "Herba") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }
     elseif ($datas['jenis_tumbuhan'] == "Perdu") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }
     elseif ($datas['jenis_tumbuhan'] == "Semak") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }else{
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];   
     }
@@ -5940,19 +5938,19 @@ $c4[$not] =  $k41[$not]*$bobot4;
         $k4[$no] = $diare22/$total;
     }elseif ($datas['jenis_tumbuhan'] == "Liana") {
         echo $diare23/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare23/$total;
     }
     elseif ($datas['jenis_tumbuhan'] == "Herba") {
         echo $diare24/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare24/$total;
     }
     elseif ($datas['jenis_tumbuhan'] == "perdu" or $datas['jenis_tumbuhan'] == "Perdu") {
         echo $diare25/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare25/$total;
     }
     elseif ($datas['jenis_tumbuhan'] == "Semak") {
         echo $diare26/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare26/$total;
     }else{
                                                 $k4[$no] = 0;
                                                 echo $k4[$no];
@@ -5972,10 +5970,10 @@ $c4[$not] =  $k41[$not]*$bobot4;
                                             $k211 = array_sum($k2) ;
                                             echo $k211 ; ?></td>
                                             <td><?php 
-                                            $k311 = array_sum($k1) ;
+                                            $k311 = array_sum($k3) ;
                                             echo $k311 ; ?></td>
                                             <td><?php 
-                                            $k411 = array_sum($k1) ;
+                                            $k411 = array_sum($k4) ;
                                             echo $k411 ; ?></td>
                                         </tr>
                                        
@@ -6027,24 +6025,24 @@ $c4[$not] =  $k41[$not]*$bobot4;
                                               
                                                   <td><?php
                                             if ($datas['cara_penggunaan'] == 'Diminum' ) {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                                 
                                             }elseif ($datas['cara_penggunaan'] == "Dimakan") {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                             }elseif ($datas['cara_penggunaan'] == "Dioles") {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                             }elseif ($datas['cara_penggunaan'] == "Dikumur") {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                             }else{
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                                 
@@ -6053,69 +6051,69 @@ $c4[$not] =  $k41[$not]*$bobot4;
                                               <td>
                                                 <?php 
                                                 if ($datas['bagian_tumbuhan'] == "Akar" ) {
-        $k31[$not]=$k1[$not]/$k311;
+        $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     }elseif ($datas['bagian_tumbuhan'] == "Umbi") {
-     $k31[$not]=$k1[$not]/$k311;
+     $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
        
     }elseif ($datas['bagian_tumbuhan'] == "Semua") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Daun") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Batang") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Getah") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Bunga") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Biji") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Buah") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
         
     }else{
-        $k31[$not]=$k1[$not]/$k311;
+        $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
         
@@ -6126,35 +6124,35 @@ $c4[$not] =  $k41[$not]*$bobot4;
                                             <td>
                                                 <?php 
     if ($datas['jenis_tumbuhan'] == "Pohon") {
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     
     }elseif ($datas['jenis_tumbuhan'] == "Liana") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }
     elseif ($datas['jenis_tumbuhan'] == "Herba") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }
     elseif ($datas['jenis_tumbuhan'] == "Perdu") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }
     elseif ($datas['jenis_tumbuhan'] == "Semak") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }else{
-            $k41[$not]=$k1[$not]/$k411;
+            $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
         
@@ -6721,19 +6719,19 @@ $c3[$not] =  $k31[$not]*$bobot3;
         $k4[$no] = $diare22/$total;
     }elseif ($datas['jenis_tumbuhan'] == "Liana") {
         echo $diare23/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare23/$total;
     }
     elseif ($datas['jenis_tumbuhan'] == "Herba") {
         echo $diare24/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare24/$total;
     }
     elseif ($datas['jenis_tumbuhan'] == "perdu" or $datas['jenis_tumbuhan'] == "Perdu") {
         echo $diare25/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare25/$total;
     }
     elseif ($datas['jenis_tumbuhan'] == "Semak") {
         echo $diare26/$total;
-        $k4[$no] = $diare22/$total;
+        $k4[$no] = $diare26/$total;
     }else{
                                             $k4[$no] = 0;
                                             echo $k4[$no];
@@ -6753,10 +6751,10 @@ $c3[$not] =  $k31[$not]*$bobot3;
                                             $k211 = array_sum($k2) ;
                                             echo $k211 ; ?></td>
                                             <td><?php 
-                                            $k311 = array_sum($k1) ;
+                                            $k311 = array_sum($k3) ;
                                             echo $k311 ; ?></td>
                                             <td><?php 
-                                            $k411 = array_sum($k1) ;
+                                            $k411 = array_sum($k4) ;
                                             echo $k411 ; ?></td>
                                         </tr>
                                        
@@ -6807,24 +6805,24 @@ $c3[$not] =  $k31[$not]*$bobot3;
                                               
                                                   <td><?php
                                             if ($datas['cara_penggunaan'] == 'Diminum' ) {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                                 
                                             }elseif ($datas['cara_penggunaan'] == "Dimakan") {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                             }elseif ($datas['cara_penggunaan'] == "Dioles") {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                             }elseif ($datas['cara_penggunaan'] == "Dikumur") {
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                             }else{
-                                                $k21[$not]=$k1[$not]/$k211;
+                                                $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
                                                 
@@ -6833,69 +6831,69 @@ $c3[$not] =  $k31[$not]*$bobot3;
                                               <td>
                                                 <?php 
                                                 if ($datas['bagian_tumbuhan'] == "Akar" ) {
-        $k31[$not]=$k1[$not]/$k311;
+        $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     }elseif ($datas['bagian_tumbuhan'] == "Umbi") {
-     $k31[$not]=$k1[$not]/$k311;
+     $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
        
     }elseif ($datas['bagian_tumbuhan'] == "Semua") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Daun") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Batang") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Getah") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Bunga") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Biji") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
     }elseif ($datas['bagian_tumbuhan'] == "Buah") {
-    $k31[$not]=$k1[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
         
     }else{
-        $k31[$not]=$k1[$not]/$k311;
+        $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];    
     }
@@ -6905,35 +6903,35 @@ $c3[$not] =  $k31[$not]*$bobot3;
                                             <td>
                                                 <?php 
     if ($datas['jenis_tumbuhan'] == "Pohon") {
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     
     }elseif ($datas['jenis_tumbuhan'] == "Liana") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }
     elseif ($datas['jenis_tumbuhan'] == "Herba") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }
     elseif ($datas['jenis_tumbuhan'] == "Perdu") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }
     elseif ($datas['jenis_tumbuhan'] == "Semak") {
     
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
     }else{
-        $k41[$not]=$k1[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];    
     }

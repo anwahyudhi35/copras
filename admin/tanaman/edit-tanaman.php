@@ -175,6 +175,10 @@ $data=mysqli_fetch_array($query);
                         <option value="Cacingan"<?php if($data['khasiat'] == 'Cacingan') { ?> selected="selected"<?php } ?>>Cacingan</option>
                       </select>
                     </div>
+                     <div class="form-group">
+                      <label>Latin</label>
+                      <input type="text" name="latin" cols="60" rows="10" class="form-control" value="<?php echo $data['latin']; ?>">   
+                    </div>
                     <div class="form-group">
                       <label>Resep</label>
                       <textarea name="resep" cols="60" rows="10" class="form-control"> <?php echo $data['resep']; ?></textarea>  

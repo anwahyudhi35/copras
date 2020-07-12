@@ -155,6 +155,10 @@ session_start();
                         <option value="Cacingan">Cacingan</option>
                       </select>
                     </div>
+                     <div class="form-group">
+                      <label>Latin</label>
+                      <input type="text" name="latin" cols="60" rows="10" class="form-control" required=""> 
+                    </div>
                     <div class="form-group">
                       <label>Resep</label>
                       <textarea name="resep" cols="60" rows="10" class="form-control"></textarea>  

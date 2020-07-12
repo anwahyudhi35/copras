@@ -94,7 +94,9 @@ $data=mysqli_fetch_array($query);
                         class="img-thumbnail" width="300" heigth="300" ></center>
                 <div class="panel-body">
                     <p>
-                    <strong><?php echo $data['nama_tumbuhan']; ?></strong></p>
+                    Nama Tumbuhan: <strong><?php echo $data['nama_tumbuhan']; ?></strong></p>
+                    <p>Nama Latin: <i><strong><?php echo $data['latin']; ?></strong></i></p>
+                    <p>Famili: <i><strong><?php echo $data['famili']; ?></strong></i></p>
                 <p>Dapat menyembuhkan <strong><?php echo $data['khasiat']; ?></strong>
                 Bagian tumbuhan yang digunakan adalah <strong><?php echo $data['bagian_tumbuhan']; ?></strong>
                 dengan cara pengunaan <strong><?php echo $data['cara_penggunaan']; ?></strong>

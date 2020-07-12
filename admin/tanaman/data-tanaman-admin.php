@@ -107,11 +107,13 @@ session_start();
                         <tr>
                           <td>No</td>
                           <td>Nama Tumbuhan</td>
+                          <td>Latin</td>
                           <td>Jenis Tumbuhan</td>
                           <td>Bagian Tumbuhan</td>
                           <td>Cara Pengolahan</td>
                           <td>Cara Penggunaan</td>
                           <td>Khasiat</td>
+
                           <td>aksi</td>
                         </tr>
                       </thead>
@@ -124,6 +126,7 @@ session_start();
                         <tr>
                           <td> <?php echo $no; ?> </td>
                           <td> <?php echo $data['nama_tumbuhan']; ?></td>
+                          <td> <i><?php echo $data['latin']; ?></i></td>
                           <td><?php echo $data['jenis_tumbuhan']; ?></td>
                           <td><?php echo $data['bagian_tumbuhan']; ?></td>
                           <td><?php echo $data['cara_pengolahan']; ?></td>

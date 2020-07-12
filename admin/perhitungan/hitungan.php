@@ -24,7 +24,7 @@ session_start();
         <!-- Our Custom CSS -->
         <link rel="stylesheet" href="../../asset/index.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>
     <body>
 
@@ -82,7 +82,9 @@ session_start();
                                 <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a href="../edit-profil.php">Profil</a></li>
+                                    <li><?php $id = $_SESSION['id_amin'] ?>
+                                        <a href="../edit-profil.php?siapa=<?php echo $id ?>">Ubah</a></li>
+                                    
                                     <li><a href="../logout.php">Log out</a></li>
                                  </ul>
                             </div>
@@ -99,22 +101,13 @@ session_start();
                     <div class="panel-heading">
                     </div>
                     <div class="panel-body">
-                        <ul class="nav nav-tabs">
-                            <li><a data-toggle="tab" href="#diare">Diare</a></li>
-                            <li><a data-toggle="tab" href="#maag">Maag</a></li>
-                            <li><a data-toggle="tab" href="#sariawan">Sariawan</a></li>
-                            <li><a data-toggle="tab" href="#ambeien">Ambeien</a></li>
-                            <li><a data-toggle="tab" href="#perut">Sakit Perut</a></li>
-                            <li><a data-toggle="tab" href="#sembelit">Sembelit</a></li>
-                            <li><a data-toggle="tab" href="#disentri">Disentri</a></li>
-                            <li><a data-toggle="tab" href="#gigi">Sakit Gigi</a></li>
-                            <li><a href="#cacingan" data-toggle="tab" >Cacingan</a></li>
-                        </ul>
-                      
-                        <br><br>
-                        <div class="tab-content">
-                            <div id="diare" class="tab-pane">
-                               <h3><center>AHP</center></h3>
+                        <h3><center>AHP</center></h3>
+                        <center>    
+                    <a href="ubah-hitung.php?hitung=<?php echo $totalan['id'] ?>" class="btn btn-warning"> 
+                    <i class="glyphicon glyphicon-pencil"></i>
+                    <span>Ubah Hitungan</span>
+                    </a>
+                    </center>
                                 <hr>
                                 <h3>Matriks</h3>
                                 <table class="table table-hovered table-bordered">
@@ -127,29 +120,22 @@ session_start();
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <?php 
-
-                                            $ahp1 = array();
-                                            $ahp2 = array();
-                                            $ahp3 = array();
-                                            $ahp4 = array();
-                                             ?>
                                             <td>Jenis Tumbuhan</td>
                                             <td><?php 
-                                                $ahp1[0]=1;
-                                                echo $ahp1[0];
+                                                
+                                                echo $totalan['a11'];
                                              ?></td>
                                             <td><?php 
                                                 $ahp1[1]=5;
-                                                echo $ahp1[1];
+                                                echo $totalan['a11'];
                                              ?></td>
                                             <td><?php 
                                                 $ahp1[2]=3;
-                                                echo $ahp1[2];
+                                                echo $totalan['a11'];
                                              ?></td>
                                             <td><?php 
                                                 $ahp1[3]=2;
-                                                echo $ahp1[3];
+                                                echo $totalan['a11'];
                                              ?></td>
                                         </tr>
 
@@ -157,7 +143,7 @@ session_start();
                                             <td>Cara Pengolahan</td>
                                             <td><?php 
                                                 $ahp2[0]=0.20;
-                                                echo $ahp2[0];
+                                                echo $totalan['a11'];
                                              ?></td>
                                             <td><?php 
                                                 $ahp2[1]=1;
@@ -248,7 +234,7 @@ session_start();
                                                         echo $cm1[0]; ?>
                                                     </td>
                                                     <td>
-                                                   <?php $cm1[1]=$ahp1[1]/$tahp[1];
+                                                    <?php $cm1[1]=$ahp1[1]/$tahp[1];
                                                         echo $cm1[1]; ?></td>
                                                     <td><?php $cm1[2]=$ahp1[2]/$tahp[2];
                                                         echo $cm1[2]; ?></td>
@@ -369,18 +355,198 @@ session_start();
                                             <tr>
                                                 <td>
                                                     <?php 
-                                                    $ci = ((($tahp[0]*$eigen[0])+($tahp[1]*$eigen[1])+($tahp[2]*$eigen[2])+($tahp[3]*$eigen[3]))-4)/3;
+                                                    $ci = (($tahp[0]*$eigen[0])+($tahp[1]*$eigen[1])+($tahp[2]*$eigen[2])+($tahp[3]*$eigen[3]));
                                                     echo $ci;
                                                      ?>
                                                 </td>
-                                                <td><?php 
-                                                $cr = $ci/0.9;
+                                                <td rowspan="2"><?php 
+                                                $cr = (($ci-4)/3)/0.9;
                                                 echo $cr;
                                                  ?></td>
                                             </tr>
+                                            <tr>
+                                                <td><?php echo ($ci-4)/3;?>
+                                            </td>
+                                                </tr>
                                         </tbody>
                                     </table>
 
+                                    <h3>Sub Kriteria</h3>
+                                    <hr>
+                            <table class="table table-hovered table-bordered">
+                                <thead>
+                                    <td>Jenis Tumbuhan</td>
+                                    <td>Nilai</td>
+                                    <td>Jumlah</td>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Pohon</td>
+                                        <td><?php echo $diare22; ?></td>
+                                        <td><?php  echo $diare22/$total ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Perdu</td>
+                                        <td><?php echo $diare25; ?></td>
+                                        <td><?php  echo $diare25/$total ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Liana</td>
+                                        <td><?php echo $diare23; ?></td>
+                                        <td><?php  echo $diare23/$total ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Semak</td>
+                                        <td><?php echo $diare26; ?></td>
+                                        <td><?php  echo $diare26/$total ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Herba</td>
+                                        <td><?php echo $diare24; ?></td>
+                                        <td><?php  echo $diare24/$total ?></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table table-hovered table-bordered">
+                                <thead>
+                                    <td>Cara Pengolahan</td>
+                                    <td>Nilai</td>
+                                    <td>Jumlah</td>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Direbus</td>
+                                        <td><?php echo $diare3; ?></td>
+                                        <td><?php  echo $diare3/$total ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Langsung</td>
+                                        <td><?php echo $diare1; ?></td>
+                                        <td><?php  echo $diare1/$total ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dihaluskan</td>
+                                        <td><?php echo $diare2; ?></td>
+                                        <td><?php  echo $diare2/$total ?></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table table-hovered table-bordered">
+                                    <thead>
+                                        <td>Cara Penggunaan</td>
+                                        <td>Nilai</td>
+                                        <td>Jumlah</td>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Dimakan</td>
+                                            <td><?php echo $diare6; ?></td>
+                                            <td><?php  echo $diare6/$total ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Dikumur</td>
+                                            <td><?php echo $diare8; ?></td>
+                                            <td><?php  echo $diare8/$total ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Diminum</td>
+                                            <td><?php echo $diare5; ?></td>
+                                            <td><?php  echo $diare5/$total ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Dioleskan</td>
+                                            <td><?php echo $diare7; ?></td>
+                                            <td><?php  echo $diare7/$total ?></td>
+                                        </tr>
+                                    </tbody>
+                            </table>
+
+                            <table class="table table-hovered table-bordered">
+                                <thead>
+                                    <td>Bagian yang Digunakan</td>
+                                    <td>Nilai</td>
+                                    <td>Jumlah</td>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Daun</td>
+                                        <td><?php echo $diare16; ?></td>
+                                        <td><?php echo $diare16/$total ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Akar</td>
+                                        <td><?php echo $diare11; ?></td>
+                                        <td><?php echo $diare11/$total ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Buah</td>
+                                        <td><?php echo $diare21; ?></td>
+                                        <td><?php echo $diare21/$total ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Biji</td>
+                                        <td><?php echo $diare20; ?></td>
+                                        <td><?php echo $diare20/$total ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Batang</td>
+                                        <td><?php echo $diare17; ?></td>
+                                        <td><?php echo $diare17/$total ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Getah</td>
+                                        <td><?php echo $diare18; ?></td>
+                                        <td><?php echo $diare18/$total ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Bunga</td>
+                                        <td><?php echo $diare19; ?></td>
+                                        <td><?php echo $diare19/$total ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Kulit Batang</td>
+                                        <td><?php echo $diare15; ?></td>
+                                        <td><?php echo $diare15/$total ?></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Semua</td>
+                                        <td><?php echo $diare13; ?></td>
+                                        <td><?php echo $diare13/$total ?></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Umbi</td>
+                                        <td><?php echo $diare12; ?></td>
+                                        <td><?php echo $diare12/$total ?></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Kulit Buah</td>
+                                        <td><?php echo $diare14; ?></td>
+                                        <td><?php echo $diare14/$total ?></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+                        <ul class="nav nav-tabs">
+                            <li><a data-toggle="tab" href="#diare">Diare</a></li>
+                            <li><a data-toggle="tab" href="#maag">Maag</a></li>
+                            <li><a data-toggle="tab" href="#sariawan">Sariawan</a></li>
+                            <li><a data-toggle="tab" href="#ambeien">Ambeien</a></li>
+                            <li><a data-toggle="tab" href="#perut">Sakit Perut</a></li>
+                            <li><a data-toggle="tab" href="#sembelit">Sembelit</a></li>
+                            <li><a data-toggle="tab" href="#disentri">Disentri</a></li>
+                            <li><a data-toggle="tab" href="#gigi">Sakit Gigi</a></li>
+                            <li><a href="#cacingan" data-toggle="tab" >Cacingan</a></li>
+                        </ul>
+                      
+                        <br><br>
+                        <div class="tab-content">
+                            <div id="diare" class="tab-pane">
                                 <h3><center>COPRAS</center></h3>
                                 <hr>
                                 <h4>Matriks</h4>
@@ -883,276 +1049,9 @@ $c3[$not] =  $k31[$not]*$bobot3;
                             </tbody>
                             </table>
                             </div>
+                        
                             <!-- Hitungan MAAG -->
                             <div id="maag" class="tab-pane">
-                                <h3><center>AHP</center></h3>
-                                <hr>
-                                <h3>Matriks</h3>
-                                <table class="table table-hovered table-bordered">
-                                    <thead>
-                                        <td>Kriteria</td>
-                                        <td>Jenis Tumbuhan</td>
-                                        <td>Cara Pengolahan</td>
-                                        <td>Cara Pemanfaatan</td>
-                                        <td>Bagian Tumbuhan</td>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <?php 
-
-                                            $ahp1 = array();
-                                            $ahp2 = array();
-                                            $ahp3 = array();
-                                            $ahp4 = array();
-                                             ?>
-                                            <td>Jenis Tumbuhan</td>
-                                            <td><?php 
-                                                $ahp1[0]=1;
-                                                echo $ahp1[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp1[1]=5;
-                                                echo $ahp1[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp1[2]=3;
-                                                echo $ahp1[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp1[3]=2;
-                                                echo $ahp1[3];
-                                             ?></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Cara Pengolahan</td>
-                                            <td><?php 
-                                                $ahp2[0]=0.20;
-                                                echo $ahp2[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp2[1]=1;
-                                                echo $ahp2[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp2[2]=0.50;
-                                                echo $ahp2[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp2[3]=0.33;
-                                                echo $ahp2[3];
-                                             ?></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Cara Pemanfaatan</td>
-                                            <td><?php 
-                                                $ahp3[0]=0.33;
-                                                echo $ahp3[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp3[1]=2;
-                                                echo $ahp3[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp3[2]=1;
-                                                echo $ahp3[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp3[3]=0.25;
-                                                echo $ahp3[3];
-                                             ?></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Bagian Tumbuhan</td>
-                                            <td><?php 
-                                                $ahp4[0]=0.5;
-                                                echo $ahp4[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp4[1]=3;
-                                                echo $ahp4[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp4[2]=4;
-                                                echo $ahp4[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp4[3]=1;
-                                                echo $ahp4[3];
-                                             ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jumlah</td>
-                                            <td><?php 
-                                            $tahp[0] = $ahp1[0]+$ahp2[0]+$ahp3[0]+$ahp4[0];
-                                            echo $tahp[0]; ?></td>
-                                            <td><?php 
-                                            $tahp[1] = $ahp1[1]+$ahp2[1]+$ahp3[1]+$ahp4[1];
-                                            echo $tahp[1]; ?></td>
-                                            <td><?php 
-                                            $tahp[2] = $ahp1[2]+$ahp2[2]+$ahp3[2]+$ahp4[2];
-                                            echo $tahp[2]; ?></td>
-                                            <td><?php 
-                                            $tahp[3] = $ahp1[3]+$ahp2[3]+$ahp3[3]+$ahp4[3];
-                                            echo $tahp[3]; ?></td>
-                                        </tr>
-                                    </tbody>
-
-                                    
-                                </table>
-                                <h3>Matriks Normalisasi</h3>
-                                    <table class="table table-hovered table-bordered">
-                                        <thead>
-                                            <td></td>
-                                            <td>C1</td>
-                                            <td>C2</td>
-                                            <td>C3</td>
-                                            <td>C4</td>
-                                            <td>Jumlah Baris</td>
-                                            <td>Prioritas Eigein</td>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                    <td>C1</td>
-                                                    <td>
-                                                        <?php $cm1[0]=$ahp1[0]/$tahp[0];
-                                                        echo $cm1[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm1[1]=$ahp1[1]/$tahp[1];
-                                                        echo $cm1[1]; ?></td>
-                                                    <td><?php $cm1[2]=$ahp1[2]/$tahp[2];
-                                                        echo $cm1[2]; ?></td>
-                                                    <td><?php $cm1[3]=$ahp1[3]/$tahp[3];
-                                                        echo $cm1[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[0]=array_sum($cm1);
-                                                    echo $baris[0];
-                                                     ?></td>
-                                                    <td><?php $eigen[0]=$baris[0]/4;
-                                                        echo $eigen[0]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>                  
-
-                                                <td>C2</td>
-<td>    
-                                                        <?php $cm2[0]=$ahp2[0]/$tahp[0];
-                                                        echo $cm2[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm2[1]=$ahp2[1]/$tahp[1];
-                                                        echo $cm2[1]; ?></td>
-                                                    <td><?php $cm2[2]=$ahp2[2]/$tahp[2];
-                                                        echo $cm2[2]; ?></td>
-                                                    <td><?php $cm2[3]=$ahp2[3]/$tahp[3];
-                                                        echo $cm2[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[1]=array_sum($cm2);
-                                                    echo $baris[1];
-                                                     ?></td>
-                                                    <td><?php $eigen[1]=$baris[1]/4;
-                                                        echo $eigen[1]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>                    
-
-                                                <td>C3</td>
-                                                    <td>
-                                                        <?php $cm3[0]=$ahp3[0]/$tahp[0];
-                                                        echo $cm3[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm3[1]=$ahp3[1]/$tahp[1];
-                                                        echo $cm3[1]; ?></td>
-                                                    <td><?php $cm3[2]=$ahp3[2]/$tahp[2];
-                                                        echo $cm3[2]; ?></td>
-                                                    <td><?php $cm3[3]=$ahp3[3]/$tahp[3];
-                                                        echo $cm3[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[2]=array_sum($cm3);
-                                                    echo $baris[2];
-                                                     ?></td>
-                                                    <td><?php $eigen[2]=$baris[2]/4;
-                                                        echo $eigen[2]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>                    
-
-                                                <td>C4</td>
-                                                   <td>
-                                                        <?php $cm4[0]=$ahp4[0]/$tahp[0];
-                                                        echo $cm4[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm4[1]=$ahp4[1]/$tahp[1];
-                                                        echo $cm4[1]; ?></td>
-                                                    <td><?php $cm4[2]=$ahp4[2]/$tahp[2];
-                                                        echo $cm4[2]; ?></td>
-                                                    <td><?php $cm4[3]=$ahp4[3]/$tahp[3];
-                                                        echo $cm4[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[3]=array_sum($cm4);
-                                                    echo $baris[3];
-                                                     ?></td>
-                                                    <td><?php $eigen[3]=$baris[3]/4;
-                                                        echo $eigen[3]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Total</td>
-                                                    <td><?php 
-                                                    $tm[0] = $cm1[0]+$cm2[0]+$cm3[0]+$cm4[0];
-                                                    echo $tm[0]?></td>
-                                                    <td><?php 
-                                                    $tm[1] = $cm1[1]+$cm2[1]+$cm3[1]+$cm4[1];
-                                                    echo $tm[1]?></td>
-                                                    <td><?php 
-                                                    $tm[2] = $cm1[2]+$cm2[2]+$cm3[2]+$cm4[2];
-                                                    echo $tm[2]?></td>
-                                                    <td><?php 
-                                                    $tm[3] = $cm1[3]+$cm2[3]+$cm3[3]+$cm4[3];
-                                                    echo $tm[3]?></td>
-                                                    <td><?php 
-                                                    $tm[4]=$baris[0]+$baris[1]+$baris[2]+$baris[3];
-                                                    echo $tm[4];
-                                                     ?></td>
-                                                    <td><?php 
-                                                    $tm[5]=$eigen[0]+$eigen[1]+$eigen[2]+$eigen[3];
-                                                     echo $tm[5];?></td>
-                                            </tr>
-
-
-
-                                        </tbody>
-                                    </table>
-
-                                    <table class="table table-hovered table-bordered">
-                                        <thead>
-                                            <td>CI</td>
-                                            <td>CR</td>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <?php 
-                                                    $ci = ((($tahp[0]*$eigen[0])+($tahp[1]*$eigen[1])+($tahp[2]*$eigen[2])+($tahp[3]*$eigen[3]))-4)/3;
-                                                    echo $ci;
-                                                     ?>
-                                                </td>
-                                                <td><?php 
-                                                $cr = $ci/0.9;
-                                                echo $cr;
-                                                 ?></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
                                 <h3><center>COPRAS</center></h3>
                                 <hr>
                                 <h4>Matriks</h4>
@@ -1656,274 +1555,6 @@ $c3[$not] =  $k31[$not]*$bobot3;
                             </div>
                             <!-- Hitungan Sariawan -->
                             <div id="sariawan" class="tab-pane">
-                               <h3><center>AHP</center></h3>
-                                <hr>
-                                <h3>Matriks</h3>
-                                <table class="table table-hovered table-bordered">
-                                    <thead>
-                                        <td>Kriteria</td>
-                                        <td>Jenis Tumbuhan</td>
-                                        <td>Cara Pengolahan</td>
-                                        <td>Cara Pemanfaatan</td>
-                                        <td>Bagian Tumbuhan</td>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <?php 
-
-                                            $ahp1 = array();
-                                            $ahp2 = array();
-                                            $ahp3 = array();
-                                            $ahp4 = array();
-                                             ?>
-                                            <td>Jenis Tumbuhan</td>
-                                            <td><?php 
-                                                $ahp1[0]=1;
-                                                echo $ahp1[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp1[1]=5;
-                                                echo $ahp1[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp1[2]=3;
-                                                echo $ahp1[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp1[3]=2;
-                                                echo $ahp1[3];
-                                             ?></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Cara Pengolahan</td>
-                                            <td><?php 
-                                                $ahp2[0]=0.20;
-                                                echo $ahp2[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp2[1]=1;
-                                                echo $ahp2[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp2[2]=0.50;
-                                                echo $ahp2[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp2[3]=0.33;
-                                                echo $ahp2[3];
-                                             ?></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Cara Pemanfaatan</td>
-                                            <td><?php 
-                                                $ahp3[0]=0.33;
-                                                echo $ahp3[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp3[1]=2;
-                                                echo $ahp3[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp3[2]=1;
-                                                echo $ahp3[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp3[3]=0.25;
-                                                echo $ahp3[3];
-                                             ?></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Bagian Tumbuhan</td>
-                                            <td><?php 
-                                                $ahp4[0]=0.5;
-                                                echo $ahp4[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp4[1]=3;
-                                                echo $ahp4[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp4[2]=4;
-                                                echo $ahp4[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp4[3]=1;
-                                                echo $ahp4[3];
-                                             ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jumlah</td>
-                                            <td><?php 
-                                            $tahp[0] = $ahp1[0]+$ahp2[0]+$ahp3[0]+$ahp4[0];
-                                            echo $tahp[0]; ?></td>
-                                            <td><?php 
-                                            $tahp[1] = $ahp1[1]+$ahp2[1]+$ahp3[1]+$ahp4[1];
-                                            echo $tahp[1]; ?></td>
-                                            <td><?php 
-                                            $tahp[2] = $ahp1[2]+$ahp2[2]+$ahp3[2]+$ahp4[2];
-                                            echo $tahp[2]; ?></td>
-                                            <td><?php 
-                                            $tahp[3] = $ahp1[3]+$ahp2[3]+$ahp3[3]+$ahp4[3];
-                                            echo $tahp[3]; ?></td>
-                                        </tr>
-                                    </tbody>
-
-                                    
-                                </table>
-                                <h3>Matriks Normalisasi</h3>
-                                    <table class="table table-hovered table-bordered">
-                                        <thead>
-                                            <td></td>
-                                            <td>C1</td>
-                                            <td>C2</td>
-                                            <td>C3</td>
-                                            <td>C4</td>
-                                            <td>Jumlah Baris</td>
-                                            <td>Prioritas Eigein</td>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                    <td>C1</td>
-                                                    <td>
-                                                        <?php $cm1[0]=$ahp1[0]/$tahp[0];
-                                                        echo $cm1[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm1[1]=$ahp1[1]/$tahp[1];
-                                                        echo $cm1[1]; ?></td>
-                                                    <td><?php $cm1[2]=$ahp1[2]/$tahp[2];
-                                                        echo $cm1[2]; ?></td>
-                                                    <td><?php $cm1[3]=$ahp1[3]/$tahp[3];
-                                                        echo $cm1[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[0]=array_sum($cm1);
-                                                    echo $baris[0];
-                                                     ?></td>
-                                                    <td><?php $eigen[0]=$baris[0]/4;
-                                                        echo $eigen[0]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>                  
-
-                                                <td>C2</td>
-<td>    
-                                                        <?php $cm2[0]=$ahp2[0]/$tahp[0];
-                                                        echo $cm2[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm2[1]=$ahp2[1]/$tahp[1];
-                                                        echo $cm2[1]; ?></td>
-                                                    <td><?php $cm2[2]=$ahp2[2]/$tahp[2];
-                                                        echo $cm2[2]; ?></td>
-                                                    <td><?php $cm2[3]=$ahp2[3]/$tahp[3];
-                                                        echo $cm2[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[1]=array_sum($cm2);
-                                                    echo $baris[1];
-                                                     ?></td>
-                                                    <td><?php $eigen[1]=$baris[1]/4;
-                                                        echo $eigen[1]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>                    
-
-                                                <td>C3</td>
-                                                    <td>
-                                                        <?php $cm3[0]=$ahp3[0]/$tahp[0];
-                                                        echo $cm3[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm3[1]=$ahp3[1]/$tahp[1];
-                                                        echo $cm3[1]; ?></td>
-                                                    <td><?php $cm3[2]=$ahp3[2]/$tahp[2];
-                                                        echo $cm3[2]; ?></td>
-                                                    <td><?php $cm3[3]=$ahp3[3]/$tahp[3];
-                                                        echo $cm3[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[2]=array_sum($cm3);
-                                                    echo $baris[2];
-                                                     ?></td>
-                                                    <td><?php $eigen[2]=$baris[2]/4;
-                                                        echo $eigen[2]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>                    
-
-                                                <td>C4</td>
-                                                   <td>
-                                                        <?php $cm4[0]=$ahp4[0]/$tahp[0];
-                                                        echo $cm4[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm4[1]=$ahp4[1]/$tahp[1];
-                                                        echo $cm4[1]; ?></td>
-                                                    <td><?php $cm4[2]=$ahp4[2]/$tahp[2];
-                                                        echo $cm4[2]; ?></td>
-                                                    <td><?php $cm4[3]=$ahp4[3]/$tahp[3];
-                                                        echo $cm4[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[3]=array_sum($cm4);
-                                                    echo $baris[3];
-                                                     ?></td>
-                                                    <td><?php $eigen[3]=$baris[3]/4;
-                                                        echo $eigen[3]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Total</td>
-                                                    <td><?php 
-                                                    $tm[0] = $cm1[0]+$cm2[0]+$cm3[0]+$cm4[0];
-                                                    echo $tm[0]?></td>
-                                                    <td><?php 
-                                                    $tm[1] = $cm1[1]+$cm2[1]+$cm3[1]+$cm4[1];
-                                                    echo $tm[1]?></td>
-                                                    <td><?php 
-                                                    $tm[2] = $cm1[2]+$cm2[2]+$cm3[2]+$cm4[2];
-                                                    echo $tm[2]?></td>
-                                                    <td><?php 
-                                                    $tm[3] = $cm1[3]+$cm2[3]+$cm3[3]+$cm4[3];
-                                                    echo $tm[3]?></td>
-                                                    <td><?php 
-                                                    $tm[4]=$baris[0]+$baris[1]+$baris[2]+$baris[3];
-                                                    echo $tm[4];
-                                                     ?></td>
-                                                    <td><?php 
-                                                    $tm[5]=$eigen[0]+$eigen[1]+$eigen[2]+$eigen[3];
-                                                     echo $tm[5];?></td>
-                                            </tr>
-
-
-
-                                        </tbody>
-                                    </table>
-
-                                    <table class="table table-hovered table-bordered">
-                                        <thead>
-                                            <td>CI</td>
-                                            <td>CR</td>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <?php 
-                                                    $ci = ((($tahp[0]*$eigen[0])+($tahp[1]*$eigen[1])+($tahp[2]*$eigen[2])+($tahp[3]*$eigen[3]))-4)/3;
-                                                    echo $ci;
-                                                     ?>
-                                                </td>
-                                                <td><?php 
-                                                $cr = $ci/0.9;
-                                                echo $cr;
-                                                 ?></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
                                 <h3><center>COPRAS</center></h3>
                                 <hr>
                                 <h4>Matriks</h4>
@@ -2429,274 +2060,6 @@ $c3[$not] =  $k31[$not]*$bobot3;
                             </div>
                             <!-- Hitungan Ambeien -->
                             <div id="ambeien" class="tab-pane">
-                               <h3><center>AHP</center></h3>
-                                <hr>
-                                <h3>Matriks</h3>
-                                <table class="table table-hovered table-bordered">
-                                    <thead>
-                                        <td>Kriteria</td>
-                                        <td>Jenis Tumbuhan</td>
-                                        <td>Cara Pengolahan</td>
-                                        <td>Cara Pemanfaatan</td>
-                                        <td>Bagian Tumbuhan</td>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <?php 
-
-                                            $ahp1 = array();
-                                            $ahp2 = array();
-                                            $ahp3 = array();
-                                            $ahp4 = array();
-                                             ?>
-                                            <td>Jenis Tumbuhan</td>
-                                            <td><?php 
-                                                $ahp1[0]=1;
-                                                echo $ahp1[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp1[1]=5;
-                                                echo $ahp1[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp1[2]=3;
-                                                echo $ahp1[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp1[3]=2;
-                                                echo $ahp1[3];
-                                             ?></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Cara Pengolahan</td>
-                                            <td><?php 
-                                                $ahp2[0]=0.20;
-                                                echo $ahp2[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp2[1]=1;
-                                                echo $ahp2[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp2[2]=0.50;
-                                                echo $ahp2[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp2[3]=0.33;
-                                                echo $ahp2[3];
-                                             ?></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Cara Pemanfaatan</td>
-                                            <td><?php 
-                                                $ahp3[0]=0.33;
-                                                echo $ahp3[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp3[1]=2;
-                                                echo $ahp3[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp3[2]=1;
-                                                echo $ahp3[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp3[3]=0.25;
-                                                echo $ahp3[3];
-                                             ?></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Bagian Tumbuhan</td>
-                                            <td><?php 
-                                                $ahp4[0]=0.5;
-                                                echo $ahp4[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp4[1]=3;
-                                                echo $ahp4[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp4[2]=4;
-                                                echo $ahp4[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp4[3]=1;
-                                                echo $ahp4[3];
-                                             ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jumlah</td>
-                                            <td><?php 
-                                            $tahp[0] = $ahp1[0]+$ahp2[0]+$ahp3[0]+$ahp4[0];
-                                            echo $tahp[0]; ?></td>
-                                            <td><?php 
-                                            $tahp[1] = $ahp1[1]+$ahp2[1]+$ahp3[1]+$ahp4[1];
-                                            echo $tahp[1]; ?></td>
-                                            <td><?php 
-                                            $tahp[2] = $ahp1[2]+$ahp2[2]+$ahp3[2]+$ahp4[2];
-                                            echo $tahp[2]; ?></td>
-                                            <td><?php 
-                                            $tahp[3] = $ahp1[3]+$ahp2[3]+$ahp3[3]+$ahp4[3];
-                                            echo $tahp[3]; ?></td>
-                                        </tr>
-                                    </tbody>
-
-                                    
-                                </table>
-                                <h3>Matriks Normalisasi</h3>
-                                    <table class="table table-hovered table-bordered">
-                                        <thead>
-                                            <td></td>
-                                            <td>C1</td>
-                                            <td>C2</td>
-                                            <td>C3</td>
-                                            <td>C4</td>
-                                            <td>Jumlah Baris</td>
-                                            <td>Prioritas Eigein</td>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                    <td>C1</td>
-                                                    <td>
-                                                        <?php $cm1[0]=$ahp1[0]/$tahp[0];
-                                                        echo $cm1[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm1[1]=$ahp1[1]/$tahp[1];
-                                                        echo $cm1[1]; ?></td>
-                                                    <td><?php $cm1[2]=$ahp1[2]/$tahp[2];
-                                                        echo $cm1[2]; ?></td>
-                                                    <td><?php $cm1[3]=$ahp1[3]/$tahp[3];
-                                                        echo $cm1[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[0]=array_sum($cm1);
-                                                    echo $baris[0];
-                                                     ?></td>
-                                                    <td><?php $eigen[0]=$baris[0]/4;
-                                                        echo $eigen[0]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>                  
-
-                                                <td>C2</td>
-<td>    
-                                                        <?php $cm2[0]=$ahp2[0]/$tahp[0];
-                                                        echo $cm2[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm2[1]=$ahp2[1]/$tahp[1];
-                                                        echo $cm2[1]; ?></td>
-                                                    <td><?php $cm2[2]=$ahp2[2]/$tahp[2];
-                                                        echo $cm2[2]; ?></td>
-                                                    <td><?php $cm2[3]=$ahp2[3]/$tahp[3];
-                                                        echo $cm2[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[1]=array_sum($cm2);
-                                                    echo $baris[1];
-                                                     ?></td>
-                                                    <td><?php $eigen[1]=$baris[1]/4;
-                                                        echo $eigen[1]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>                    
-
-                                                <td>C3</td>
-                                                    <td>
-                                                        <?php $cm3[0]=$ahp3[0]/$tahp[0];
-                                                        echo $cm3[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm3[1]=$ahp3[1]/$tahp[1];
-                                                        echo $cm3[1]; ?></td>
-                                                    <td><?php $cm3[2]=$ahp3[2]/$tahp[2];
-                                                        echo $cm3[2]; ?></td>
-                                                    <td><?php $cm3[3]=$ahp3[3]/$tahp[3];
-                                                        echo $cm3[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[2]=array_sum($cm3);
-                                                    echo $baris[2];
-                                                     ?></td>
-                                                    <td><?php $eigen[2]=$baris[2]/4;
-                                                        echo $eigen[2]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>                    
-
-                                                <td>C4</td>
-                                                   <td>
-                                                        <?php $cm4[0]=$ahp4[0]/$tahp[0];
-                                                        echo $cm4[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm4[1]=$ahp4[1]/$tahp[1];
-                                                        echo $cm4[1]; ?></td>
-                                                    <td><?php $cm4[2]=$ahp4[2]/$tahp[2];
-                                                        echo $cm4[2]; ?></td>
-                                                    <td><?php $cm4[3]=$ahp4[3]/$tahp[3];
-                                                        echo $cm4[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[3]=array_sum($cm4);
-                                                    echo $baris[3];
-                                                     ?></td>
-                                                    <td><?php $eigen[3]=$baris[3]/4;
-                                                        echo $eigen[3]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Total</td>
-                                                    <td><?php 
-                                                    $tm[0] = $cm1[0]+$cm2[0]+$cm3[0]+$cm4[0];
-                                                    echo $tm[0]?></td>
-                                                    <td><?php 
-                                                    $tm[1] = $cm1[1]+$cm2[1]+$cm3[1]+$cm4[1];
-                                                    echo $tm[1]?></td>
-                                                    <td><?php 
-                                                    $tm[2] = $cm1[2]+$cm2[2]+$cm3[2]+$cm4[2];
-                                                    echo $tm[2]?></td>
-                                                    <td><?php 
-                                                    $tm[3] = $cm1[3]+$cm2[3]+$cm3[3]+$cm4[3];
-                                                    echo $tm[3]?></td>
-                                                    <td><?php 
-                                                    $tm[4]=$baris[0]+$baris[1]+$baris[2]+$baris[3];
-                                                    echo $tm[4];
-                                                     ?></td>
-                                                    <td><?php 
-                                                    $tm[5]=$eigen[0]+$eigen[1]+$eigen[2]+$eigen[3];
-                                                     echo $tm[5];?></td>
-                                            </tr>
-
-
-
-                                        </tbody>
-                                    </table>
-
-                                    <table class="table table-hovered table-bordered">
-                                        <thead>
-                                            <td>CI</td>
-                                            <td>CR</td>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <?php 
-                                                    $ci = ((($tahp[0]*$eigen[0])+($tahp[1]*$eigen[1])+($tahp[2]*$eigen[2])+($tahp[3]*$eigen[3]))-4)/3;
-                                                    echo $ci;
-                                                     ?>
-                                                </td>
-                                                <td><?php 
-                                                $cr = $ci/0.9;
-                                                echo $cr;
-                                                 ?></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
                                 <!-- copras -->
                                 <h3><center>COPRAS</center></h3>
                                 <hr>
@@ -3203,274 +2566,6 @@ $c3[$not] =  $k31[$not]*$bobot3;
                             </div>
                             <!-- Hitungan Sakit Perut -->
                             <div id="perut" class="tab-pane">
-                               <h3><center>AHP</center></h3>
-                                <hr>
-                                <h3>Matriks</h3>
-                                <table class="table table-hovered table-bordered">
-                                    <thead>
-                                        <td>Kriteria</td>
-                                        <td>Jenis Tumbuhan</td>
-                                        <td>Cara Pengolahan</td>
-                                        <td>Cara Pemanfaatan</td>
-                                        <td>Bagian Tumbuhan</td>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <?php 
-
-                                            $ahp1 = array();
-                                            $ahp2 = array();
-                                            $ahp3 = array();
-                                            $ahp4 = array();
-                                             ?>
-                                            <td>Jenis Tumbuhan</td>
-                                            <td><?php 
-                                                $ahp1[0]=1;
-                                                echo $ahp1[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp1[1]=5;
-                                                echo $ahp1[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp1[2]=3;
-                                                echo $ahp1[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp1[3]=2;
-                                                echo $ahp1[3];
-                                             ?></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Cara Pengolahan</td>
-                                            <td><?php 
-                                                $ahp2[0]=0.20;
-                                                echo $ahp2[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp2[1]=1;
-                                                echo $ahp2[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp2[2]=0.50;
-                                                echo $ahp2[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp2[3]=0.33;
-                                                echo $ahp2[3];
-                                             ?></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Cara Pemanfaatan</td>
-                                            <td><?php 
-                                                $ahp3[0]=0.33;
-                                                echo $ahp3[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp3[1]=2;
-                                                echo $ahp3[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp3[2]=1;
-                                                echo $ahp3[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp3[3]=0.25;
-                                                echo $ahp3[3];
-                                             ?></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Bagian Tumbuhan</td>
-                                            <td><?php 
-                                                $ahp4[0]=0.5;
-                                                echo $ahp4[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp4[1]=3;
-                                                echo $ahp4[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp4[2]=4;
-                                                echo $ahp4[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp4[3]=1;
-                                                echo $ahp4[3];
-                                             ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jumlah</td>
-                                            <td><?php 
-                                            $tahp[0] = $ahp1[0]+$ahp2[0]+$ahp3[0]+$ahp4[0];
-                                            echo $tahp[0]; ?></td>
-                                            <td><?php 
-                                            $tahp[1] = $ahp1[1]+$ahp2[1]+$ahp3[1]+$ahp4[1];
-                                            echo $tahp[1]; ?></td>
-                                            <td><?php 
-                                            $tahp[2] = $ahp1[2]+$ahp2[2]+$ahp3[2]+$ahp4[2];
-                                            echo $tahp[2]; ?></td>
-                                            <td><?php 
-                                            $tahp[3] = $ahp1[3]+$ahp2[3]+$ahp3[3]+$ahp4[3];
-                                            echo $tahp[3]; ?></td>
-                                        </tr>
-                                    </tbody>
-
-                                    
-                                </table>
-                                <h3>Matriks Normalisasi</h3>
-                                    <table class="table table-hovered table-bordered">
-                                        <thead>
-                                            <td></td>
-                                            <td>C1</td>
-                                            <td>C2</td>
-                                            <td>C3</td>
-                                            <td>C4</td>
-                                            <td>Jumlah Baris</td>
-                                            <td>Prioritas Eigein</td>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                    <td>C1</td>
-                                                    <td>
-                                                        <?php $cm1[0]=$ahp1[0]/$tahp[0];
-                                                        echo $cm1[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm1[1]=$ahp1[1]/$tahp[1];
-                                                        echo $cm1[1]; ?></td>
-                                                    <td><?php $cm1[2]=$ahp1[2]/$tahp[2];
-                                                        echo $cm1[2]; ?></td>
-                                                    <td><?php $cm1[3]=$ahp1[3]/$tahp[3];
-                                                        echo $cm1[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[0]=array_sum($cm1);
-                                                    echo $baris[0];
-                                                     ?></td>
-                                                    <td><?php $eigen[0]=$baris[0]/4;
-                                                        echo $eigen[0]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>                  
-
-                                                <td>C2</td>
-<td>    
-                                                        <?php $cm2[0]=$ahp2[0]/$tahp[0];
-                                                        echo $cm2[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm2[1]=$ahp2[1]/$tahp[1];
-                                                        echo $cm2[1]; ?></td>
-                                                    <td><?php $cm2[2]=$ahp2[2]/$tahp[2];
-                                                        echo $cm2[2]; ?></td>
-                                                    <td><?php $cm2[3]=$ahp2[3]/$tahp[3];
-                                                        echo $cm2[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[1]=array_sum($cm2);
-                                                    echo $baris[1];
-                                                     ?></td>
-                                                    <td><?php $eigen[1]=$baris[1]/4;
-                                                        echo $eigen[1]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>                    
-
-                                                <td>C3</td>
-                                                    <td>
-                                                        <?php $cm3[0]=$ahp3[0]/$tahp[0];
-                                                        echo $cm3[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm3[1]=$ahp3[1]/$tahp[1];
-                                                        echo $cm3[1]; ?></td>
-                                                    <td><?php $cm3[2]=$ahp3[2]/$tahp[2];
-                                                        echo $cm3[2]; ?></td>
-                                                    <td><?php $cm3[3]=$ahp3[3]/$tahp[3];
-                                                        echo $cm3[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[2]=array_sum($cm3);
-                                                    echo $baris[2];
-                                                     ?></td>
-                                                    <td><?php $eigen[2]=$baris[2]/4;
-                                                        echo $eigen[2]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>                    
-
-                                                <td>C4</td>
-                                                   <td>
-                                                        <?php $cm4[0]=$ahp4[0]/$tahp[0];
-                                                        echo $cm4[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm4[1]=$ahp4[1]/$tahp[1];
-                                                        echo $cm4[1]; ?></td>
-                                                    <td><?php $cm4[2]=$ahp4[2]/$tahp[2];
-                                                        echo $cm4[2]; ?></td>
-                                                    <td><?php $cm4[3]=$ahp4[3]/$tahp[3];
-                                                        echo $cm4[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[3]=array_sum($cm4);
-                                                    echo $baris[3];
-                                                     ?></td>
-                                                    <td><?php $eigen[3]=$baris[3]/4;
-                                                        echo $eigen[3]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Total</td>
-                                                    <td><?php 
-                                                    $tm[0] = $cm1[0]+$cm2[0]+$cm3[0]+$cm4[0];
-                                                    echo $tm[0]?></td>
-                                                    <td><?php 
-                                                    $tm[1] = $cm1[1]+$cm2[1]+$cm3[1]+$cm4[1];
-                                                    echo $tm[1]?></td>
-                                                    <td><?php 
-                                                    $tm[2] = $cm1[2]+$cm2[2]+$cm3[2]+$cm4[2];
-                                                    echo $tm[2]?></td>
-                                                    <td><?php 
-                                                    $tm[3] = $cm1[3]+$cm2[3]+$cm3[3]+$cm4[3];
-                                                    echo $tm[3]?></td>
-                                                    <td><?php 
-                                                    $tm[4]=$baris[0]+$baris[1]+$baris[2]+$baris[3];
-                                                    echo $tm[4];
-                                                     ?></td>
-                                                    <td><?php 
-                                                    $tm[5]=$eigen[0]+$eigen[1]+$eigen[2]+$eigen[3];
-                                                     echo $tm[5];?></td>
-                                            </tr>
-
-
-
-                                        </tbody>
-                                    </table>
-
-                                    <table class="table table-hovered table-bordered">
-                                        <thead>
-                                            <td>CI</td>
-                                            <td>CR</td>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <?php 
-                                                    $ci = ((($tahp[0]*$eigen[0])+($tahp[1]*$eigen[1])+($tahp[2]*$eigen[2])+($tahp[3]*$eigen[3]))-4)/3;
-                                                    echo $ci;
-                                                     ?>
-                                                </td>
-                                                <td><?php 
-                                                $cr = $ci/0.9;
-                                                echo $cr;
-                                                 ?></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
                                 <!-- copras -->
                                 <h3><center>COPRAS</center></h3>
                                 <hr>
@@ -3978,274 +3073,6 @@ $c3[$not] =  $k31[$not]*$bobot3;
 
 <!-- Hitungan Sembelit -->
                             <div id="sembelit" class="tab-pane">
-                               <h3><center>AHP</center></h3>
-                                <hr>
-                                <h3>Matriks</h3>
-                                <table class="table table-hovered table-bordered">
-                                    <thead>
-                                        <td>Kriteria</td>
-                                        <td>Jenis Tumbuhan</td>
-                                        <td>Cara Pengolahan</td>
-                                        <td>Cara Pemanfaatan</td>
-                                        <td>Bagian Tumbuhan</td>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <?php 
-
-                                            $ahp1 = array();
-                                            $ahp2 = array();
-                                            $ahp3 = array();
-                                            $ahp4 = array();
-                                             ?>
-                                            <td>Jenis Tumbuhan</td>
-                                            <td><?php 
-                                                $ahp1[0]=1;
-                                                echo $ahp1[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp1[1]=5;
-                                                echo $ahp1[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp1[2]=3;
-                                                echo $ahp1[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp1[3]=2;
-                                                echo $ahp1[3];
-                                             ?></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Cara Pengolahan</td>
-                                            <td><?php 
-                                                $ahp2[0]=0.20;
-                                                echo $ahp2[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp2[1]=1;
-                                                echo $ahp2[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp2[2]=0.50;
-                                                echo $ahp2[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp2[3]=0.33;
-                                                echo $ahp2[3];
-                                             ?></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Cara Pemanfaatan</td>
-                                            <td><?php 
-                                                $ahp3[0]=0.33;
-                                                echo $ahp3[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp3[1]=2;
-                                                echo $ahp3[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp3[2]=1;
-                                                echo $ahp3[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp3[3]=0.25;
-                                                echo $ahp3[3];
-                                             ?></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Bagian Tumbuhan</td>
-                                            <td><?php 
-                                                $ahp4[0]=0.5;
-                                                echo $ahp4[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp4[1]=3;
-                                                echo $ahp4[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp4[2]=4;
-                                                echo $ahp4[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp4[3]=1;
-                                                echo $ahp4[3];
-                                             ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jumlah</td>
-                                            <td><?php 
-                                            $tahp[0] = $ahp1[0]+$ahp2[0]+$ahp3[0]+$ahp4[0];
-                                            echo $tahp[0]; ?></td>
-                                            <td><?php 
-                                            $tahp[1] = $ahp1[1]+$ahp2[1]+$ahp3[1]+$ahp4[1];
-                                            echo $tahp[1]; ?></td>
-                                            <td><?php 
-                                            $tahp[2] = $ahp1[2]+$ahp2[2]+$ahp3[2]+$ahp4[2];
-                                            echo $tahp[2]; ?></td>
-                                            <td><?php 
-                                            $tahp[3] = $ahp1[3]+$ahp2[3]+$ahp3[3]+$ahp4[3];
-                                            echo $tahp[3]; ?></td>
-                                        </tr>
-                                    </tbody>
-
-                                    
-                                </table>
-                                <h3>Matriks Normalisasi</h3>
-                                    <table class="table table-hovered table-bordered">
-                                        <thead>
-                                            <td></td>
-                                            <td>C1</td>
-                                            <td>C2</td>
-                                            <td>C3</td>
-                                            <td>C4</td>
-                                            <td>Jumlah Baris</td>
-                                            <td>Prioritas Eigein</td>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                    <td>C1</td>
-                                                    <td>
-                                                        <?php $cm1[0]=$ahp1[0]/$tahp[0];
-                                                        echo $cm1[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm1[1]=$ahp1[1]/$tahp[1];
-                                                        echo $cm1[1]; ?></td>
-                                                    <td><?php $cm1[2]=$ahp1[2]/$tahp[2];
-                                                        echo $cm1[2]; ?></td>
-                                                    <td><?php $cm1[3]=$ahp1[3]/$tahp[3];
-                                                        echo $cm1[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[0]=array_sum($cm1);
-                                                    echo $baris[0];
-                                                     ?></td>
-                                                    <td><?php $eigen[0]=$baris[0]/4;
-                                                        echo $eigen[0]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>                  
-
-                                                <td>C2</td>
-<td>    
-                                                        <?php $cm2[0]=$ahp2[0]/$tahp[0];
-                                                        echo $cm2[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm2[1]=$ahp2[1]/$tahp[1];
-                                                        echo $cm2[1]; ?></td>
-                                                    <td><?php $cm2[2]=$ahp2[2]/$tahp[2];
-                                                        echo $cm2[2]; ?></td>
-                                                    <td><?php $cm2[3]=$ahp2[3]/$tahp[3];
-                                                        echo $cm2[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[1]=array_sum($cm2);
-                                                    echo $baris[1];
-                                                     ?></td>
-                                                    <td><?php $eigen[1]=$baris[1]/4;
-                                                        echo $eigen[1]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>                    
-
-                                                <td>C3</td>
-                                                    <td>
-                                                        <?php $cm3[0]=$ahp3[0]/$tahp[0];
-                                                        echo $cm3[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm3[1]=$ahp3[1]/$tahp[1];
-                                                        echo $cm3[1]; ?></td>
-                                                    <td><?php $cm3[2]=$ahp3[2]/$tahp[2];
-                                                        echo $cm3[2]; ?></td>
-                                                    <td><?php $cm3[3]=$ahp3[3]/$tahp[3];
-                                                        echo $cm3[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[2]=array_sum($cm3);
-                                                    echo $baris[2];
-                                                     ?></td>
-                                                    <td><?php $eigen[2]=$baris[2]/4;
-                                                        echo $eigen[2]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>                    
-
-                                                <td>C4</td>
-                                                   <td>
-                                                        <?php $cm4[0]=$ahp4[0]/$tahp[0];
-                                                        echo $cm4[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm4[1]=$ahp4[1]/$tahp[1];
-                                                        echo $cm4[1]; ?></td>
-                                                    <td><?php $cm4[2]=$ahp4[2]/$tahp[2];
-                                                        echo $cm4[2]; ?></td>
-                                                    <td><?php $cm4[3]=$ahp4[3]/$tahp[3];
-                                                        echo $cm4[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[3]=array_sum($cm4);
-                                                    echo $baris[3];
-                                                     ?></td>
-                                                    <td><?php $eigen[3]=$baris[3]/4;
-                                                        echo $eigen[3]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Total</td>
-                                                    <td><?php 
-                                                    $tm[0] = $cm1[0]+$cm2[0]+$cm3[0]+$cm4[0];
-                                                    echo $tm[0]?></td>
-                                                    <td><?php 
-                                                    $tm[1] = $cm1[1]+$cm2[1]+$cm3[1]+$cm4[1];
-                                                    echo $tm[1]?></td>
-                                                    <td><?php 
-                                                    $tm[2] = $cm1[2]+$cm2[2]+$cm3[2]+$cm4[2];
-                                                    echo $tm[2]?></td>
-                                                    <td><?php 
-                                                    $tm[3] = $cm1[3]+$cm2[3]+$cm3[3]+$cm4[3];
-                                                    echo $tm[3]?></td>
-                                                    <td><?php 
-                                                    $tm[4]=$baris[0]+$baris[1]+$baris[2]+$baris[3];
-                                                    echo $tm[4];
-                                                     ?></td>
-                                                    <td><?php 
-                                                    $tm[5]=$eigen[0]+$eigen[1]+$eigen[2]+$eigen[3];
-                                                     echo $tm[5];?></td>
-                                            </tr>
-
-
-
-                                        </tbody>
-                                    </table>
-
-                                    <table class="table table-hovered table-bordered">
-                                        <thead>
-                                            <td>CI</td>
-                                            <td>CR</td>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <?php 
-                                                    $ci = ((($tahp[0]*$eigen[0])+($tahp[1]*$eigen[1])+($tahp[2]*$eigen[2])+($tahp[3]*$eigen[3]))-4)/3;
-                                                    echo $ci;
-                                                     ?>
-                                                </td>
-                                                <td><?php 
-                                                $cr = $ci/0.9;
-                                                echo $cr;
-                                                 ?></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
                                 <!-- copras -->
                                 <h3><center>COPRAS</center></h3>
                                 <hr>
@@ -4396,7 +3223,7 @@ $c3[$not] =  $k31[$not]*$bobot3;
     }
     elseif ($datas['jenis_tumbuhan'] == "Semak") {
         echo $diare26/$total;
-        $k4[$no] = $diare27/$total;
+        $k4[$no] = $diare26/$total;
     }else{
         echo 0;
         $k4[$no] = 0;
@@ -4758,274 +3585,6 @@ $c4[$not] =  $k41[$not]*$bobot4;
 </table>
 </div>
                             <div id="disentri" class="tab-pane fade in active">
-                               <h3><center>AHP</center></h3>
-                                <hr>
-                                <h3>Matriks</h3>
-                                <table class="table table-hovered table-bordered">
-                                    <thead>
-                                        <td>Kriteria</td>
-                                        <td>Jenis Tumbuhan</td>
-                                        <td>Cara Pengolahan</td>
-                                        <td>Cara Pemanfaatan</td>
-                                        <td>Bagian Tumbuhan</td>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <?php 
-
-                                            $ahp1 = array();
-                                            $ahp2 = array();
-                                            $ahp3 = array();
-                                            $ahp4 = array();
-                                             ?>
-                                            <td>Jenis Tumbuhan</td>
-                                            <td><?php 
-                                                $ahp1[0]=1;
-                                                echo $ahp1[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp1[1]=5;
-                                                echo $ahp1[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp1[2]=3;
-                                                echo $ahp1[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp1[3]=2;
-                                                echo $ahp1[3];
-                                             ?></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Cara Pengolahan</td>
-                                            <td><?php 
-                                                $ahp2[0]=0.20;
-                                                echo $ahp2[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp2[1]=1;
-                                                echo $ahp2[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp2[2]=0.50;
-                                                echo $ahp2[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp2[3]=0.33;
-                                                echo $ahp2[3];
-                                             ?></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Cara Pemanfaatan</td>
-                                            <td><?php 
-                                                $ahp3[0]=0.33;
-                                                echo $ahp3[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp3[1]=2;
-                                                echo $ahp3[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp3[2]=1;
-                                                echo $ahp3[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp3[3]=0.25;
-                                                echo $ahp3[3];
-                                             ?></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Bagian Tumbuhan</td>
-                                            <td><?php 
-                                                $ahp4[0]=0.5;
-                                                echo $ahp4[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp4[1]=3;
-                                                echo $ahp4[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp4[2]=4;
-                                                echo $ahp4[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp4[3]=1;
-                                                echo $ahp4[3];
-                                             ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jumlah</td>
-                                            <td><?php 
-                                            $tahp[0] = $ahp1[0]+$ahp2[0]+$ahp3[0]+$ahp4[0];
-                                            echo $tahp[0]; ?></td>
-                                            <td><?php 
-                                            $tahp[1] = $ahp1[1]+$ahp2[1]+$ahp3[1]+$ahp4[1];
-                                            echo $tahp[1]; ?></td>
-                                            <td><?php 
-                                            $tahp[2] = $ahp1[2]+$ahp2[2]+$ahp3[2]+$ahp4[2];
-                                            echo $tahp[2]; ?></td>
-                                            <td><?php 
-                                            $tahp[3] = $ahp1[3]+$ahp2[3]+$ahp3[3]+$ahp4[3];
-                                            echo $tahp[3]; ?></td>
-                                        </tr>
-                                    </tbody>
-
-                                    
-                                </table>
-                                <h3>Matriks Normalisasi</h3>
-                                    <table class="table table-hovered table-bordered">
-                                        <thead>
-                                            <td></td>
-                                            <td>C1</td>
-                                            <td>C2</td>
-                                            <td>C3</td>
-                                            <td>C4</td>
-                                            <td>Jumlah Baris</td>
-                                            <td>Prioritas Eigein</td>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                    <td>C1</td>
-                                                    <td>
-                                                        <?php $cm1[0]=$ahp1[0]/$tahp[0];
-                                                        echo $cm1[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm1[1]=$ahp1[1]/$tahp[1];
-                                                        echo $cm1[1]; ?></td>
-                                                    <td><?php $cm1[2]=$ahp1[2]/$tahp[2];
-                                                        echo $cm1[2]; ?></td>
-                                                    <td><?php $cm1[3]=$ahp1[3]/$tahp[3];
-                                                        echo $cm1[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[0]=array_sum($cm1);
-                                                    echo $baris[0];
-                                                     ?></td>
-                                                    <td><?php $eigen[0]=$baris[0]/4;
-                                                        echo $eigen[0]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>                  
-
-                                                <td>C2</td>
-<td>    
-                                                        <?php $cm2[0]=$ahp2[0]/$tahp[0];
-                                                        echo $cm2[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm2[1]=$ahp2[1]/$tahp[1];
-                                                        echo $cm2[1]; ?></td>
-                                                    <td><?php $cm2[2]=$ahp2[2]/$tahp[2];
-                                                        echo $cm2[2]; ?></td>
-                                                    <td><?php $cm2[3]=$ahp2[3]/$tahp[3];
-                                                        echo $cm2[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[1]=array_sum($cm2);
-                                                    echo $baris[1];
-                                                     ?></td>
-                                                    <td><?php $eigen[1]=$baris[1]/4;
-                                                        echo $eigen[1]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>                    
-
-                                                <td>C3</td>
-                                                    <td>
-                                                        <?php $cm3[0]=$ahp3[0]/$tahp[0];
-                                                        echo $cm3[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm3[1]=$ahp3[1]/$tahp[1];
-                                                        echo $cm3[1]; ?></td>
-                                                    <td><?php $cm3[2]=$ahp3[2]/$tahp[2];
-                                                        echo $cm3[2]; ?></td>
-                                                    <td><?php $cm3[3]=$ahp3[3]/$tahp[3];
-                                                        echo $cm3[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[2]=array_sum($cm3);
-                                                    echo $baris[2];
-                                                     ?></td>
-                                                    <td><?php $eigen[2]=$baris[2]/4;
-                                                        echo $eigen[2]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>                    
-
-                                                <td>C4</td>
-                                                   <td>
-                                                        <?php $cm4[0]=$ahp4[0]/$tahp[0];
-                                                        echo $cm4[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm4[1]=$ahp4[1]/$tahp[1];
-                                                        echo $cm4[1]; ?></td>
-                                                    <td><?php $cm4[2]=$ahp4[2]/$tahp[2];
-                                                        echo $cm4[2]; ?></td>
-                                                    <td><?php $cm4[3]=$ahp4[3]/$tahp[3];
-                                                        echo $cm4[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[3]=array_sum($cm4);
-                                                    echo $baris[3];
-                                                     ?></td>
-                                                    <td><?php $eigen[3]=$baris[3]/4;
-                                                        echo $eigen[3]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Total</td>
-                                                    <td><?php 
-                                                    $tm[0] = $cm1[0]+$cm2[0]+$cm3[0]+$cm4[0];
-                                                    echo $tm[0]?></td>
-                                                    <td><?php 
-                                                    $tm[1] = $cm1[1]+$cm2[1]+$cm3[1]+$cm4[1];
-                                                    echo $tm[1]?></td>
-                                                    <td><?php 
-                                                    $tm[2] = $cm1[2]+$cm2[2]+$cm3[2]+$cm4[2];
-                                                    echo $tm[2]?></td>
-                                                    <td><?php 
-                                                    $tm[3] = $cm1[3]+$cm2[3]+$cm3[3]+$cm4[3];
-                                                    echo $tm[3]?></td>
-                                                    <td><?php 
-                                                    $tm[4]=$baris[0]+$baris[1]+$baris[2]+$baris[3];
-                                                    echo $tm[4];
-                                                     ?></td>
-                                                    <td><?php 
-                                                    $tm[5]=$eigen[0]+$eigen[1]+$eigen[2]+$eigen[3];
-                                                     echo $tm[5];?></td>
-                                            </tr>
-
-
-
-                                        </tbody>
-                                    </table>
-
-                                    <table class="table table-hovered table-bordered">
-                                        <thead>
-                                            <td>CI</td>
-                                            <td>CR</td>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <?php 
-                                                    $ci = ((($tahp[0]*$eigen[0])+($tahp[1]*$eigen[1])+($tahp[2]*$eigen[2])+($tahp[3]*$eigen[3]))-4)/3;
-                                                    echo $ci;
-                                                     ?>
-                                                </td>
-                                                <td><?php 
-                                                $cr = $ci/0.9;
-                                                echo $cr;
-                                                 ?></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
                                 <!-- copras -->
                                 <h3><center>COPRAS</center></h3>
                                 <hr>
@@ -5535,274 +4094,6 @@ $c4[$not] =  $k41[$not]*$bobot4;
 </table>
                             </div>
                             <div id="gigi" class="tab-pane fade">
-                                <h3><center>AHP</center></h3>
-                                <hr>
-                                <h3>Matriks</h3>
-                                <table class="table table-hovered table-bordered">
-                                    <thead>
-                                        <td>Kriteria</td>
-                                        <td>Jenis Tumbuhan</td>
-                                        <td>Cara Pengolahan</td>
-                                        <td>Cara Pemanfaatan</td>
-                                        <td>Bagian Tumbuhan</td>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <?php 
-
-                                            $ahp1 = array();
-                                            $ahp2 = array();
-                                            $ahp3 = array();
-                                            $ahp4 = array();
-                                             ?>
-                                            <td>Jenis Tumbuhan</td>
-                                            <td><?php 
-                                                $ahp1[0]=1;
-                                                echo $ahp1[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp1[1]=5;
-                                                echo $ahp1[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp1[2]=3;
-                                                echo $ahp1[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp1[3]=2;
-                                                echo $ahp1[3];
-                                             ?></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Cara Pengolahan</td>
-                                            <td><?php 
-                                                $ahp2[0]=0.20;
-                                                echo $ahp2[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp2[1]=1;
-                                                echo $ahp2[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp2[2]=0.50;
-                                                echo $ahp2[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp2[3]=0.33;
-                                                echo $ahp2[3];
-                                             ?></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Cara Pemanfaatan</td>
-                                            <td><?php 
-                                                $ahp3[0]=0.33;
-                                                echo $ahp3[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp3[1]=2;
-                                                echo $ahp3[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp3[2]=1;
-                                                echo $ahp3[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp3[3]=0.25;
-                                                echo $ahp3[3];
-                                             ?></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Bagian Tumbuhan</td>
-                                            <td><?php 
-                                                $ahp4[0]=0.5;
-                                                echo $ahp4[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp4[1]=3;
-                                                echo $ahp4[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp4[2]=4;
-                                                echo $ahp4[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp4[3]=1;
-                                                echo $ahp4[3];
-                                             ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jumlah</td>
-                                            <td><?php 
-                                            $tahp[0] = $ahp1[0]+$ahp2[0]+$ahp3[0]+$ahp4[0];
-                                            echo $tahp[0]; ?></td>
-                                            <td><?php 
-                                            $tahp[1] = $ahp1[1]+$ahp2[1]+$ahp3[1]+$ahp4[1];
-                                            echo $tahp[1]; ?></td>
-                                            <td><?php 
-                                            $tahp[2] = $ahp1[2]+$ahp2[2]+$ahp3[2]+$ahp4[2];
-                                            echo $tahp[2]; ?></td>
-                                            <td><?php 
-                                            $tahp[3] = $ahp1[3]+$ahp2[3]+$ahp3[3]+$ahp4[3];
-                                            echo $tahp[3]; ?></td>
-                                        </tr>
-                                    </tbody>
-
-                                    
-                                </table>
-                                <h3>Matriks Normalisasi</h3>
-                                    <table class="table table-hovered table-bordered">
-                                        <thead>
-                                            <td></td>
-                                            <td>C1</td>
-                                            <td>C2</td>
-                                            <td>C3</td>
-                                            <td>C4</td>
-                                            <td>Jumlah Baris</td>
-                                            <td>Prioritas Eigein</td>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                    <td>C1</td>
-                                                    <td>
-                                                        <?php $cm1[0]=$ahp1[0]/$tahp[0];
-                                                        echo $cm1[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm1[1]=$ahp1[1]/$tahp[1];
-                                                        echo $cm1[1]; ?></td>
-                                                    <td><?php $cm1[2]=$ahp1[2]/$tahp[2];
-                                                        echo $cm1[2]; ?></td>
-                                                    <td><?php $cm1[3]=$ahp1[3]/$tahp[3];
-                                                        echo $cm1[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[0]=array_sum($cm1);
-                                                    echo $baris[0];
-                                                     ?></td>
-                                                    <td><?php $eigen[0]=$baris[0]/4;
-                                                        echo $eigen[0]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>                  
-
-                                                <td>C2</td>
-<td>    
-                                                        <?php $cm2[0]=$ahp2[0]/$tahp[0];
-                                                        echo $cm2[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm2[1]=$ahp2[1]/$tahp[1];
-                                                        echo $cm2[1]; ?></td>
-                                                    <td><?php $cm2[2]=$ahp2[2]/$tahp[2];
-                                                        echo $cm2[2]; ?></td>
-                                                    <td><?php $cm2[3]=$ahp2[3]/$tahp[3];
-                                                        echo $cm2[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[1]=array_sum($cm2);
-                                                    echo $baris[1];
-                                                     ?></td>
-                                                    <td><?php $eigen[1]=$baris[1]/4;
-                                                        echo $eigen[1]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>                    
-
-                                                <td>C3</td>
-                                                    <td>
-                                                        <?php $cm3[0]=$ahp3[0]/$tahp[0];
-                                                        echo $cm3[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm3[1]=$ahp3[1]/$tahp[1];
-                                                        echo $cm3[1]; ?></td>
-                                                    <td><?php $cm3[2]=$ahp3[2]/$tahp[2];
-                                                        echo $cm3[2]; ?></td>
-                                                    <td><?php $cm3[3]=$ahp3[3]/$tahp[3];
-                                                        echo $cm3[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[2]=array_sum($cm3);
-                                                    echo $baris[2];
-                                                     ?></td>
-                                                    <td><?php $eigen[2]=$baris[2]/4;
-                                                        echo $eigen[2]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>                    
-
-                                                <td>C4</td>
-                                                   <td>
-                                                        <?php $cm4[0]=$ahp4[0]/$tahp[0];
-                                                        echo $cm4[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm4[1]=$ahp4[1]/$tahp[1];
-                                                        echo $cm4[1]; ?></td>
-                                                    <td><?php $cm4[2]=$ahp4[2]/$tahp[2];
-                                                        echo $cm4[2]; ?></td>
-                                                    <td><?php $cm4[3]=$ahp4[3]/$tahp[3];
-                                                        echo $cm4[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[3]=array_sum($cm4);
-                                                    echo $baris[3];
-                                                     ?></td>
-                                                    <td><?php $eigen[3]=$baris[3]/4;
-                                                        echo $eigen[3]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Total</td>
-                                                    <td><?php 
-                                                    $tm[0] = $cm1[0]+$cm2[0]+$cm3[0]+$cm4[0];
-                                                    echo $tm[0]?></td>
-                                                    <td><?php 
-                                                    $tm[1] = $cm1[1]+$cm2[1]+$cm3[1]+$cm4[1];
-                                                    echo $tm[1]?></td>
-                                                    <td><?php 
-                                                    $tm[2] = $cm1[2]+$cm2[2]+$cm3[2]+$cm4[2];
-                                                    echo $tm[2]?></td>
-                                                    <td><?php 
-                                                    $tm[3] = $cm1[3]+$cm2[3]+$cm3[3]+$cm4[3];
-                                                    echo $tm[3]?></td>
-                                                    <td><?php 
-                                                    $tm[4]=$baris[0]+$baris[1]+$baris[2]+$baris[3];
-                                                    echo $tm[4];
-                                                     ?></td>
-                                                    <td><?php 
-                                                    $tm[5]=$eigen[0]+$eigen[1]+$eigen[2]+$eigen[3];
-                                                     echo $tm[5];?></td>
-                                            </tr>
-
-
-
-                                        </tbody>
-                                    </table>
-
-                                    <table class="table table-hovered table-bordered">
-                                        <thead>
-                                            <td>CI</td>
-                                            <td>CR</td>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <?php 
-                                                    $ci = ((($tahp[0]*$eigen[0])+($tahp[1]*$eigen[1])+($tahp[2]*$eigen[2])+($tahp[3]*$eigen[3]))-4)/3;
-                                                    echo $ci;
-                                                     ?>
-                                                </td>
-                                                <td><?php 
-                                                $cr = $ci/0.9;
-                                                echo $cr;
-                                                 ?></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
                                 <!-- copras -->
                                 <h3><center>COPRAS</center></h3>
                                 <hr>
@@ -6316,274 +4607,6 @@ $c3[$not] =  $k31[$not]*$bobot3;
                             </div>
 
                             <div id="cacingan" class="tab-pane">
-                                <h3><center>AHP</center></h3>
-                                <hr>
-                                <h3>Matriks</h3>
-                                <table class="table table-hovered table-bordered">
-                                    <thead>
-                                        <td>Kriteria</td>
-                                        <td>Jenis Tumbuhan</td>
-                                        <td>Cara Pengolahan</td>
-                                        <td>Cara Pemanfaatan</td>
-                                        <td>Bagian Tumbuhan</td>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <?php 
-
-                                            $ahp1 = array();
-                                            $ahp2 = array();
-                                            $ahp3 = array();
-                                            $ahp4 = array();
-                                             ?>
-                                            <td>Jenis Tumbuhan</td>
-                                            <td><?php 
-                                                $ahp1[0]=1;
-                                                echo $ahp1[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp1[1]=5;
-                                                echo $ahp1[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp1[2]=3;
-                                                echo $ahp1[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp1[3]=2;
-                                                echo $ahp1[3];
-                                             ?></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Cara Pengolahan</td>
-                                            <td><?php 
-                                                $ahp2[0]=0.20;
-                                                echo $ahp2[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp2[1]=1;
-                                                echo $ahp2[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp2[2]=0.50;
-                                                echo $ahp2[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp2[3]=0.33;
-                                                echo $ahp2[3];
-                                             ?></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Cara Pemanfaatan</td>
-                                            <td><?php 
-                                                $ahp3[0]=0.33;
-                                                echo $ahp3[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp3[1]=2;
-                                                echo $ahp3[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp3[2]=1;
-                                                echo $ahp3[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp3[3]=0.25;
-                                                echo $ahp3[3];
-                                             ?></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Bagian Tumbuhan</td>
-                                            <td><?php 
-                                                $ahp4[0]=0.5;
-                                                echo $ahp4[0];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp4[1]=3;
-                                                echo $ahp4[1];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp4[2]=4;
-                                                echo $ahp4[2];
-                                             ?></td>
-                                            <td><?php 
-                                                $ahp4[3]=1;
-                                                echo $ahp4[3];
-                                             ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jumlah</td>
-                                            <td><?php 
-                                            $tahp[0] = $ahp1[0]+$ahp2[0]+$ahp3[0]+$ahp4[0];
-                                            echo $tahp[0]; ?></td>
-                                            <td><?php 
-                                            $tahp[1] = $ahp1[1]+$ahp2[1]+$ahp3[1]+$ahp4[1];
-                                            echo $tahp[1]; ?></td>
-                                            <td><?php 
-                                            $tahp[2] = $ahp1[2]+$ahp2[2]+$ahp3[2]+$ahp4[2];
-                                            echo $tahp[2]; ?></td>
-                                            <td><?php 
-                                            $tahp[3] = $ahp1[3]+$ahp2[3]+$ahp3[3]+$ahp4[3];
-                                            echo $tahp[3]; ?></td>
-                                        </tr>
-                                    </tbody>
-
-                                    
-                                </table>
-                                <h3>Matriks Normalisasi</h3>
-                                    <table class="table table-hovered table-bordered">
-                                        <thead>
-                                            <td></td>
-                                            <td>C1</td>
-                                            <td>C2</td>
-                                            <td>C3</td>
-                                            <td>C4</td>
-                                            <td>Jumlah Baris</td>
-                                            <td>Prioritas Eigein</td>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                    <td>C1</td>
-                                                    <td>
-                                                        <?php $cm1[0]=$ahp1[0]/$tahp[0];
-                                                        echo $cm1[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm1[1]=$ahp1[1]/$tahp[1];
-                                                        echo $cm1[1]; ?></td>
-                                                    <td><?php $cm1[2]=$ahp1[2]/$tahp[2];
-                                                        echo $cm1[2]; ?></td>
-                                                    <td><?php $cm1[3]=$ahp1[3]/$tahp[3];
-                                                        echo $cm1[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[0]=array_sum($cm1);
-                                                    echo $baris[0];
-                                                     ?></td>
-                                                    <td><?php $eigen[0]=$baris[0]/4;
-                                                        echo $eigen[0]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>                  
-
-                                                <td>C2</td>
-<td>    
-                                                        <?php $cm2[0]=$ahp2[0]/$tahp[0];
-                                                        echo $cm2[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm2[1]=$ahp2[1]/$tahp[1];
-                                                        echo $cm2[1]; ?></td>
-                                                    <td><?php $cm2[2]=$ahp2[2]/$tahp[2];
-                                                        echo $cm2[2]; ?></td>
-                                                    <td><?php $cm2[3]=$ahp2[3]/$tahp[3];
-                                                        echo $cm2[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[1]=array_sum($cm2);
-                                                    echo $baris[1];
-                                                     ?></td>
-                                                    <td><?php $eigen[1]=$baris[1]/4;
-                                                        echo $eigen[1]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>                    
-
-                                                <td>C3</td>
-                                                    <td>
-                                                        <?php $cm3[0]=$ahp3[0]/$tahp[0];
-                                                        echo $cm3[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm3[1]=$ahp3[1]/$tahp[1];
-                                                        echo $cm3[1]; ?></td>
-                                                    <td><?php $cm3[2]=$ahp3[2]/$tahp[2];
-                                                        echo $cm3[2]; ?></td>
-                                                    <td><?php $cm3[3]=$ahp3[3]/$tahp[3];
-                                                        echo $cm3[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[2]=array_sum($cm3);
-                                                    echo $baris[2];
-                                                     ?></td>
-                                                    <td><?php $eigen[2]=$baris[2]/4;
-                                                        echo $eigen[2]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>                    
-
-                                                <td>C4</td>
-                                                   <td>
-                                                        <?php $cm4[0]=$ahp4[0]/$tahp[0];
-                                                        echo $cm4[0]; ?>
-                                                    </td>
-                                                    <td>
-                                                   <?php $cm4[1]=$ahp4[1]/$tahp[1];
-                                                        echo $cm4[1]; ?></td>
-                                                    <td><?php $cm4[2]=$ahp4[2]/$tahp[2];
-                                                        echo $cm4[2]; ?></td>
-                                                    <td><?php $cm4[3]=$ahp4[3]/$tahp[3];
-                                                        echo $cm4[3]; ?></td>
-                                                    </td>
-                                                    <td><?php 
-                                                    $baris[3]=array_sum($cm4);
-                                                    echo $baris[3];
-                                                     ?></td>
-                                                    <td><?php $eigen[3]=$baris[3]/4;
-                                                        echo $eigen[3]; ?></td>
-                                                    </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Total</td>
-                                                    <td><?php 
-                                                    $tm[0] = $cm1[0]+$cm2[0]+$cm3[0]+$cm4[0];
-                                                    echo $tm[0]?></td>
-                                                    <td><?php 
-                                                    $tm[1] = $cm1[1]+$cm2[1]+$cm3[1]+$cm4[1];
-                                                    echo $tm[1]?></td>
-                                                    <td><?php 
-                                                    $tm[2] = $cm1[2]+$cm2[2]+$cm3[2]+$cm4[2];
-                                                    echo $tm[2]?></td>
-                                                    <td><?php 
-                                                    $tm[3] = $cm1[3]+$cm2[3]+$cm3[3]+$cm4[3];
-                                                    echo $tm[3]?></td>
-                                                    <td><?php 
-                                                    $tm[4]=$baris[0]+$baris[1]+$baris[2]+$baris[3];
-                                                    echo $tm[4];
-                                                     ?></td>
-                                                    <td><?php 
-                                                    $tm[5]=$eigen[0]+$eigen[1]+$eigen[2]+$eigen[3];
-                                                     echo $tm[5];?></td>
-                                            </tr>
-
-
-
-                                        </tbody>
-                                    </table>
-
-                                    <table class="table table-hovered table-bordered">
-                                        <thead>
-                                            <td>CI</td>
-                                            <td>CR</td>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <?php 
-                                                    $ci = ((($tahp[0]*$eigen[0])+($tahp[1]*$eigen[1])+($tahp[2]*$eigen[2])+($tahp[3]*$eigen[3]))-4)/3;
-                                                    echo $ci;
-                                                     ?>
-                                                </td>
-                                                <td><?php 
-                                                $cr = $ci/0.9;
-                                                echo $cr;
-                                                 ?></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
                                 <!-- copras -->
                                 <h3><center>COPRAS</center></h3>
                                 <hr>

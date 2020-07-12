@@ -76,6 +76,8 @@ $data=mysqli_fetch_array($query);
                                 <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
+                                    <li><?php $id = $_SESSION['id_amin'] ?>
+                                        <a href="../edit-profil.php?siapa=<?php echo $id ?>">Ubah</a></li>
                                     
                                     <li><a href="../logout.php">Log out</a></li>
                                  </ul>

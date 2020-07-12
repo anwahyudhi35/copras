@@ -14,6 +14,7 @@ if($count == 0) { // jika salah, redirect ke login
 			document.location='../login.php'</script><?php
 }
 else { // jika benar, redirec ke halaman utama
+    $_SESSION['id_amin'] = $hasil['id_admin'];
 	$_SESSION['username'] = $username;
 	$_SESSION['nama'] = $nama;
     ?>

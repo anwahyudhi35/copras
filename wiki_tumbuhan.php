@@ -106,7 +106,7 @@ $data=mysqli_fetch_array($query);
                 </div>
                 <div class="panel-body">
                     <p>
-                    <?php echo $data['resep'] ?>         
+                    <?php echo nl2br($data['resep']); ?>         
                     </p>
                 </div>
                 

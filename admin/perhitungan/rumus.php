@@ -134,4 +134,44 @@ foreach ($dbh->query($ahp1) as $data) :
 
 endforeach;
 
+	$ahp1 = array();
+    $ahp2 = array();
+    $ahp3 = array();
+    $ahp4 = array();
+    $tahp = array();
+                            
+    //bobot default
+    $total1 = "SELECT * FROM bobot where id=1";
+    foreach ($dbh -> query($total1) as $totalan) :
+                            
+    $ahp1[0] = $totalan['a11'];
+    $ahp1[1] = $totalan['a12'];
+    $ahp1[2] = $totalan['a13'];
+    $ahp1[3] = $totalan['a14'];
+
+    $ahp2[0] = $totalan['a21'];
+    $ahp2[1] = $totalan['a22'];
+    $ahp2[2] = $totalan['a23'];
+    $ahp2[3] = $totalan['a24'];
+
+    $ahp3[0] = $totalan['a31'];
+    $ahp3[1] = $totalan['a32'];
+    $ahp3[2] = $totalan['a33'];
+    $ahp3[3] = $totalan['a34'];
+
+    $ahp4[0] = $totalan['a41'];
+    $ahp4[1] = $totalan['a42'];
+    $ahp4[2] = $totalan['a43'];
+    $ahp4[3] = $totalan['a44'];
+
+    $tahp[0] = $ahp1[0]+$ahp2[0]+$ahp3[0]+$ahp4[0];
+    $tahp[1] = $ahp1[1]+$ahp2[1]+$ahp3[1]+$ahp4[1];
+    $tahp[2] = $ahp1[2]+$ahp2[2]+$ahp3[2]+$ahp4[2];
+    $tahp[3] = $ahp1[3]+$ahp2[3]+$ahp3[3]+$ahp4[3];
+
+
+
+endforeach;
+
+
  ?>

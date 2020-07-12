@@ -71,6 +71,8 @@ session_start();
                                 <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
+                                    <li><?php $id = $_SESSION['id_amin'] ?>
+                                        <a href="../edit-profil.php?siapa=<?php echo $id ?>">Ubah</a></li>
                                     
                                     <li><a href="../logout.php">Log out</a></li>
                                  </ul>
@@ -123,7 +125,7 @@ session_start();
                           <td> <?php echo $no; ?> </td>
                           <td> <?php echo $data['nama_tumbuhan']; ?></td>
                           <td><?php echo $data['jenis_tumbuhan']; ?></td>
-                          <td>Bagian Tumbuhan</td>
+                          <td><?php echo $data['bagian_tumbuhan']; ?></td>
                           <td><?php echo $data['cara_pengolahan']; ?></td>
                           <td><?php echo $data['cara_penggunaan']; ?></td>
                           <td> <?php echo $data['khasiat']; ?></td>

@@ -2,6 +2,9 @@
 include "koneksi.php";
 $sakit = $_POST['sakit'];
 $guna = $_POST['guna'];
+$bagian = $_POST['bagian'];
+$jenis = $_POST['jenis'];
+$olah = $_POST['olah'];
 
  ?>
 
@@ -64,7 +67,7 @@ $guna = $_POST['guna'];
             <div id="content">
 
                 <nav class="navbar navbar-default">
-                    <div class="container-fluid">
+                    <div class="container">
 
                         <div class="navbar-header">
                             <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
@@ -83,8 +86,8 @@ $guna = $_POST['guna'];
                 <div class="panel panel-heading">
                     <h2>Hasil Rekomendasi Penyakit <?php echo $sakit ?></h2>
                 </div>
-                <div class="panel-body">
-                   <table class="table table-responsive table-hover table-bordered">
+               <div class="panel-body">
+                    <table class="table table-responsive table-hover table-bordered">
                        <thead>
                            <tr>
                                <th>NO</th>
@@ -98,9 +101,16 @@ $guna = $_POST['guna'];
                            </tr>
                        </thead>
                        <tbody>
-                           <?php 
-                            $sql = "select * from tumbuhan_obat where khasiat = '$sakit' AND cara_penggunaan = '$guna' ORDER BY pi DESC";
-                            $no  = 1; 
+                           <?php
+                           $no  = 1;
+                           
+                           foreach ($_POST['guna'] as $gunawan) {
+                              foreach ($_POST['olah'] as $olahan) {
+                                foreach ($_POST['jenis'] as $jenius) {
+                                    foreach ($_POST['bagian'] as $bagio) {
+                            
+                            $sql = "select tumbuhan_obat.* from tumbuhan_obat where khasiat = '$sakit' AND cara_penggunaan = '$gunawan' AND cara_pengolahan = '$olahan' AND jenis_tumbuhan = '$jenius' AND bagian_tumbuhan = '$bagio' ORDER BY qi DESC";
+
                             foreach ($dbh->query($sql) as $data):
                             ?>
                             <tr>
@@ -113,17 +123,26 @@ $guna = $_POST['guna'];
                                 <td><?php echo $data['cara_pengolahan'] ?></td>
                                 <td><?php echo $data['cara_penggunaan'] ?></td>
                                 <td><?php echo $data['khasiat'] ?></td>
-                                <td><?php echo $data['pi'];?>%</td>
+                                <td><?php echo $data['qi'] ?></td>
                             </tr>
                             <?php
-                        $no++;  
+                          
+                        
+                    $no++;    
                         endforeach;
+                         }
+                        }
+                    }
+                    
+                    }
+                
+
                          ?>
                        </tbody>
                    </table>
                 <br><br><br>
                 </center>
-                </div>
+                </div>  
                 
 
                 </div>

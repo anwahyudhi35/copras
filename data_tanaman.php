@@ -106,8 +106,8 @@ include "koneksi.php";
                    <!-- seragamkan ukurannya -->
 
 
-                  <div class="col-md-2">
-                    <div class="thumbnail">
+                  <div class="col-lg-3">
+                    
                       <!-- link berdasarkan nama tapi ga buat file baru -->
                       <a href="wiki_tumbuhan.php?pohon=<?php echo $data['id_tumbuhan'] ?>">
                         <img src="gambar/<?php 
@@ -117,14 +117,14 @@ include "koneksi.php";
                             echo $data['gambar']; 
                         
                         }?>"
-                        class="img-thumbnail" width="300" heigth="300" >
-                        <div class="caption">
-                          <p>
+                        alt="<?php echo $data['nama_tumbuhan']; ?>" width="140" height="120">
+                        <div class="desc">
+                          <p style="font-size:13px;">
                            <?php echo $data['nama_tumbuhan']; ?> 
                           </p>
                         </div>
                       </a>
-                    </div>
+                    
                   </div>
                   <?php 
                  } ?>

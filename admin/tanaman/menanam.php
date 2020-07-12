@@ -19,7 +19,7 @@ $file_ext = explode('.', $gambarnama);
 $flex = strtolower(end($file_ext));
 
 $filenamenew = $nama.".".$flex;
-$simpan = '../../gambar/'.$filenamenew;
+$simpan = '../../gambar/'.$gambarnama;
 //
 
 
@@ -28,7 +28,7 @@ $simpan = '../../gambar/'.$filenamenew;
 
 
 
-$sql=mysqli_query($dbh,"INSERT INTO tumbuhan_obat (nama_tumbuhan, jenis_tumbuhan, cara_pengolahan, cara_penggunaan, bagian_tumbuhan, khasiat, resep, gambar) VALUES ('$nama', '$jenis', '$olah', '$guna', '$bagian','$khasiat', '$resep', '$filenamenew')");
+$sql=mysqli_query($dbh,"INSERT INTO tumbuhan_obat (nama_tumbuhan, jenis_tumbuhan, cara_pengolahan, cara_penggunaan, bagian_tumbuhan, khasiat, resep, gambar) VALUES ('$nama', '$jenis', '$olah', '$guna', '$bagian','$khasiat', '$resep', '$gambarnama')");
  
 if ($sql) {
     

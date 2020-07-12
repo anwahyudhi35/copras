@@ -16,7 +16,7 @@ $file_ext = explode('.', $gambarnama);
 $flex = strtolower(end($file_ext));
 
 $filenamenew = $nama.".".$flex;
-$simpan = '../../gambar/'.$filenamenew;
+$simpan = '../../gambar/'.$gambarnama;
 
 
 $sql=mysqli_query($dbh,"UPDATE tumbuhan_obat set nama_tumbuhan='$nama', jenis_tumbuhan = '$jenis', cara_pengolahan = '$olahan', cara_penggunaan = '$guna', khasiat = '$khasiat', gambar = '$filenamenew', resep = '$resep' WHERE id_tumbuhan = '$id'");

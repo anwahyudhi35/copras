@@ -71,7 +71,9 @@ session_start();
                                 <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a href="../edit-profil.php">Profil</a></li>
+                                   <li><?php $id = $_SESSION['id_amin'] ?>
+                                        <a href="../edit-profil.php?siapa=<?php echo $id ?>">Ubah</a></li>
+                                    
                                     <li><a href="../logout.php">Log out</a></li>
                                  </ul>
                             </div>

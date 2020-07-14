@@ -11,7 +11,7 @@ $nama = $hasil['nama_admin'];
 
 if($count == 0) { // jika salah, redirect ke login
 	?><script language="JavaScript">alert('Login Gagal  !'); 
-			document.location='../login.php'</script><?php
+			document.location='login.php'</script><?php
 }
 else { // jika benar, redirec ke halaman utama
     $_SESSION['id_amin'] = $hasil['id_admin'];

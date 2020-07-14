@@ -126,15 +126,12 @@ session_start();
                                                 echo $totalan['a11'];
                                              ?></td>
                                             <td><?php 
-                                                $ahp1[1]=5;
                                                 echo $totalan['a11'];
                                              ?></td>
                                             <td><?php 
-                                                $ahp1[2]=3;
                                                 echo $totalan['a11'];
                                              ?></td>
                                             <td><?php 
-                                                $ahp1[3]=2;
                                                 echo $totalan['a11'];
                                              ?></td>
                                         </tr>
@@ -142,16 +139,13 @@ session_start();
                                         <tr>
                                             <td>Cara Pengolahan</td>
                                             <td><?php 
-                                                $ahp2[0]=0.20;
                                                 echo $totalan['a11'];
                                              ?></td>
                                             <td><?php 
-                                                $ahp2[1]=1;
-                                                echo $ahp2[1];
+                                                echo $totalan['a11'];
                                              ?></td>
                                             <td><?php 
-                                                $ahp2[2]=0.50;
-                                                echo $ahp2[2];
+                                                echo $totalan['a11'];
                                              ?></td>
                                             <td><?php 
                                                 $ahp2[3]=0.33;

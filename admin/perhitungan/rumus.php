@@ -82,11 +82,11 @@ foreach ($dbh->query($ahp1) as $data) :
 		$diare13++;
 
 		
-	}elseif ($data['bagian_tumbuhan'] == "Kulit Buah") {
+	}elseif ($data['bagian_tumbuhan'] == "KulitBuah") {
 		$diare14++;
 
 		
-	}elseif ($data['bagian_tumbuhan'] == "Kulit Batang") {
+	}elseif ($data['bagian_tumbuhan'] == "KulitBatang") {
 		$diare15++;
 
 		
@@ -141,7 +141,7 @@ endforeach;
     $tahp = array();
                             
     //bobot default
-    $total1 = "SELECT * FROM bobot where id=1";
+    $total1 = "SELECT * FROM bobot where id=2";
     foreach ($dbh -> query($total1) as $totalan) :
                             
     $ahp1[0] = $totalan['a11'];

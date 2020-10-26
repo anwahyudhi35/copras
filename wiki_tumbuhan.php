@@ -98,7 +98,13 @@ $data=mysqli_fetch_array($query);
                     <p>Nama Latin: <i><strong><?php echo $data['latin']; ?></strong></i></p>
                     
                 <p>Dapat menyembuhkan <strong><?php echo $data['khasiat']; ?></strong>
-                Bagian tumbuhan yang digunakan adalah <strong><?php echo $data['bagian_tumbuhan']; ?></strong>
+                Bagian tumbuhan yang digunakan adalah <strong><?php 
+                if ($data['bagian_tumbuhan'] == 'KulitBuah') {
+                    echo "Kulit Buah";
+                }elseif ($data['bagian_tumbuhan'] == 'KulitBatang') {
+                    echo "Kulit Batang";
+                }else
+                    echo $data['bagian_tumbuhan']; ?></strong>
                 dengan cara pengunaan <strong><?php echo $data['cara_penggunaan']; ?></strong>
                 dan diolah dengan cara <strong><?php echo $data['cara_pengolahan']; ?></strong></p>
                 

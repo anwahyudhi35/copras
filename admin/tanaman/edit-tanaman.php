@@ -60,7 +60,7 @@ $data=mysqli_fetch_array($query);
             <div id="content">
 
                 <nav class="navbar navbar-default">
-                    <div class="container-fluid">
+                    <div class="container">
 
                         <div class="navbar-header">
                             <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
@@ -88,7 +88,7 @@ $data=mysqli_fetch_array($query);
                 <div class="panel panel-default">
                 <center>
                 <div class="panel panel-heading">
-                    <h2>Tambah Data Tanaman</h2>
+                    <h2>Ubah Data Tanaman</h2>
                 </div>
               </center>
                 <!-- 
@@ -98,6 +98,7 @@ $data=mysqli_fetch_array($query);
                 -->
                   
                 <div class="panel panel-body">
+                  <div class="col-md-6 col-md-offset-3 text-center">
                  <form class="form" action="merawat.php?pohon=<?php echo $data['id_tumbuhan'] ?>" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                       <label>Nama Tumbuhan</label>
@@ -119,8 +120,8 @@ $data=mysqli_fetch_array($query);
                          <option value="Akar"<?php if($data['bagian_tumbuhan'] == 'Akar') { ?> selected="selected"<?php } ?>>Akar</option>
                          <option value="Umbi"<?php if($data['bagian_tumbuhan'] == 'Umbi') { ?> selected="selected"<?php } ?>>Umbi</option>
                          <option value="Semua"<?php if($data['bagian_tumbuhan'] == 'Semua') { ?> selected="selected"<?php } ?>>Semua</option>
-                         <option value="Kulit Buah"<?php if($data['bagian_tumbuhan'] == 'Kulit Buah') { ?> selected="selected"<?php } ?>>Kulit Buah</option>
-                         <option value="Kulit Batang"<?php if($data['bagian_tumbuhan'] == 'Kulit Batang') { ?> selected="selected"<?php } ?>>Kulit Batang</option>
+                         <option value="Kulit Buah"<?php if($data['bagian_tumbuhan'] == 'KulitBuah') { ?> selected="selected"<?php } ?>>Kulit Buah</option>
+                         <option value="KulitBatang"<?php if($data['bagian_tumbuhan'] == 'KulitBatang') { ?> selected="selected"<?php } ?>>Kulit Batang</option>
                          <option value="Daun"<?php if($data['bagian_tumbuhan'] == 'Daun') { ?> selected="selected"<?php } ?>>Daun</option>
                          <option value="Batang"<?php if($data['bagian_tumbuhan'] == 'Batang') { ?> selected="selected"<?php } ?>>Batang</option>
                          <option value="Getah"<?php if($data['bagian_tumbuhan'] == 'Getah') { ?> selected="selected"<?php } ?>>Getah</option>
@@ -184,19 +185,40 @@ $data=mysqli_fetch_array($query);
                       <textarea name="resep" cols="60" rows="10" class="form-control"> <?php echo $data['resep']; ?></textarea>  
                     </div>
                     <div class="form-group">
-                      <label> gambar </label>
-                      <input type="file" name="gambar" class="form-control" value="<?php echo $data['gambar']?>">
+                      <label> Gambar Lama</label> <br>
+                      <img src="../../gambar/<?php 
+                        if(empty($data['gambar'])){
+                            echo "daun-kartun-png-1.png";
+                        }else{
+                            echo $data['gambar']; 
+                        
+                        }?>"
+                        class="img-thumbnail" width="300" heigth="300" ></center>
+                
+                      <input type="text" value="<?php echo $data['gambar']?>" class="form-control"  readonly>
+                      <label> Ukuran File Gambar </label>
+                   
+                      <input class="form-control" id="gambarSizeOld" type="text" readonly value="<?php echo round(filesize("../../gambar/".$data['gambar'])/1024) ?> KB ">
+                      <label>Jenis File Gambar</label>
+                      <input class="form-control" id="gambarTypeOld" type="text" readonly value="<?php echo pathinfo("../../gambar/".$data['gambar'], PATHINFO_EXTENSION)?> ">
+                      
+                      <label> Gambar Baru</label>
+                      <input type="file" name="gambar" id="gambar" class="form-control"  onchange="fileInfo()">
+                      <label> Ukuran File Gambar </label>
+                      <input class="form-control" id="gambarSize" type="text" readonly>
+                      <label>Jenis File Gambar</label>
+                      <input class="form-control" id="gambarType" type="text" readonly>
                     </div>
                     <div class="form-group">
               <input type="reset" required name="Reset" class="btn btn-warning pull-right btn-fill"> 
-              <input type="submit" required name="nanam" value = "Simpan" class="btn btn-success btn-fill" onclick="return confirm('Apa anda yakin dengan Penambahan data Tumbuhan?');">
+              <input type="submit" required name="nanam" value = "Simpan" class="btn btn-success btn-fill pull-left" onclick="return confirm('Apa anda yakin dengan Penambahan data Tumbuhan?');">
         </div>
                   </form>
           
           
                   
                 
-
+</div>
                 </div>
 
 
@@ -219,6 +241,16 @@ $data=mysqli_fetch_array($query);
                      $('#sidebar').toggleClass('active');
                  });
              });
+
+             function fileInfo(){
+                var filename = document.getElementById('gambar').files[0].name;
+                var filesize = document.getElementById('gambar').files[0].size;
+                var filetype = document.getElementById('gambar').files[0].type;
+
+                document.getElementById("gambarSize").value = Math.round((filesize/1024)) +" KB";
+                document.getElementById("gambarType").value = filetype;
+                
+              }
          </script>
     </body>
 </html>

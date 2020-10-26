@@ -19,8 +19,8 @@ $gambarnama = $_FILES['gambar']['name'];
 $file_ext = explode('.', $gambarnama);
 $flex = strtolower(end($file_ext));
 
-$filenamenew = $nama.".".$flex;
-$simpan = '../../gambar/'.$gambarnama;
+$filenamenew = $gambarnama;
+$simpan = '../../gambar/'.$filenamenew;
 //
 
 

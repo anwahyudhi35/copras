@@ -126,85 +126,72 @@ session_start();
                                                 echo $totalan['a11'];
                                              ?></td>
                                             <td><?php 
-                                                echo $totalan['a11'];
+                                                echo $totalan['a12'];
                                              ?></td>
                                             <td><?php 
-                                                echo $totalan['a11'];
+                                                echo $totalan['a13'];
                                              ?></td>
                                             <td><?php 
-                                                echo $totalan['a11'];
+                                                echo $totalan['a14'];
                                              ?></td>
                                         </tr>
 
                                         <tr>
                                             <td>Cara Pengolahan</td>
                                             <td><?php 
-                                                echo $totalan['a11'];
+                                                echo $totalan['a21'];
                                              ?></td>
                                             <td><?php 
-                                                echo $totalan['a11'];
+                                                echo $totalan['a22'];
                                              ?></td>
                                             <td><?php 
-                                                echo $totalan['a11'];
+                                                echo $totalan['a23'];
                                              ?></td>
                                             <td><?php 
-                                                $ahp2[3]=0.33;
-                                                echo $ahp2[3];
+                                                echo $totalan['a24'];
                                              ?></td>
                                         </tr>
 
                                         <tr>
                                             <td>Cara Pemanfaatan</td>
                                             <td><?php 
-                                                $ahp3[0]=0.33;
-                                                echo $ahp3[0];
+                                                echo $totalan['a31'];
                                              ?></td>
                                             <td><?php 
-                                                $ahp3[1]=2;
-                                                echo $ahp3[1];
+                                                echo $totalan['a32'];
                                              ?></td>
                                             <td><?php 
-                                                $ahp3[2]=1;
-                                                echo $ahp3[2];
+                                                echo $totalan['a33'];
                                              ?></td>
                                             <td><?php 
-                                                  $ahp3[3]=0.25;
-                                                echo $ahp3[3];
+                                                  echo $totalan['a34'];
                                              ?></td>
                                         </tr>
 
                                         <tr>
                                             <td>Bagian Tumbuhan</td>
                                             <td><?php 
-                                                $ahp4[0]=0.5;
-                                                echo $ahp4[0];
+                                                echo $totalan['a41'];
                                              ?></td>
                                             <td><?php 
-                                                $ahp4[1]=3;
-                                                echo $ahp4[1];
+                                                echo $totalan['a42'];
                                              ?></td>
                                             <td><?php 
-                                                $ahp4[2]=4;
-                                                echo $ahp4[2];
+                                                echo $totalan['a43'];
                                              ?></td>
                                             <td><?php 
-                                                $ahp4[3]=1;
-                                                echo $ahp4[3];
+                                                echo $totalan['a44'];
                                              ?></td>
                                         </tr>
                                         <tr>
                                             <td>Jumlah</td>
                                             <td><?php 
-                                            $tahp[0] = $ahp1[0]+$ahp2[0]+$ahp3[0]+$ahp4[0];
                                             echo $tahp[0]; ?></td>
                                             <td><?php 
-                                            $tahp[1] = $ahp1[1]+$ahp2[1]+$ahp3[1]+$ahp4[1];
                                             echo $tahp[1]; ?></td>
                                             <td><?php 
-                                            $tahp[2] = $ahp1[2]+$ahp2[2]+$ahp3[2]+$ahp4[2];
                                             echo $tahp[2]; ?></td>
                                             <td><?php 
-                                            $tahp[3] = $ahp1[3]+$ahp2[3]+$ahp3[3]+$ahp4[3];
                                             echo $tahp[3]; ?></td>
                                         </tr>
                                     </tbody>                                    
@@ -622,12 +609,12 @@ session_start();
         $k3[$no] = $diare13/$total;
 
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit Buah") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBuah") {
         echo $diare14/$total;
         $k3[$no] = $diare14/$total;
 
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBatang") {
         
         $k3[$no] = $diare15/$total;
         echo $k3[$no];
@@ -802,13 +789,13 @@ session_start();
                                                 echo $k31[$not];
     
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit Buah") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBuah") {
     $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBatang") {
     $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
@@ -972,10 +959,10 @@ session_start();
      $c3[$not] =  $k31[$not]*$bobot3;
     }elseif ($datas['bagian_tumbuhan'] == "Semua") {
         $c3[$not] =  $k31[$not]*$bobot3;
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBuah") {
     $c3[$not] =  $k31[$not]*$bobot3;
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBatang") {
 $c3[$not] =  $k31[$not]*$bobot3;
         
     }elseif ($datas['bagian_tumbuhan'] == "Daun") {
@@ -1127,12 +1114,12 @@ $c3[$not] =  $k31[$not]*$bobot3;
         $k3[$no] = $diare13/$total;
 
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBuah") {
         echo $diare14/$total;
         $k3[$no] = $diare14/$total;
 
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBatang") {
         
         $k3[$no] = $diare15/$total;
         echo $k3[$no];
@@ -1305,13 +1292,13 @@ $c3[$not] =  $k31[$not]*$bobot3;
                                                 echo $k31[$not];
     
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBuah") {
     $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBatang") {
     $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
@@ -1474,10 +1461,10 @@ $c3[$not] =  $k31[$not]*$bobot3;
      $c3[$not] =  $k31[$not]*$bobot3;
     }elseif ($datas['bagian_tumbuhan'] == "Semua") {
         $c3[$not] =  $k31[$not]*$bobot3;
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit Buah") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBuah") {
     $c3[$not] =  $k31[$not]*$bobot3;
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBatang") {
 $c3[$not] =  $k31[$not]*$bobot3;
         
     }elseif ($datas['bagian_tumbuhan'] == "Daun") {
@@ -1630,12 +1617,12 @@ $c3[$not] =  $k31[$not]*$bobot3;
         $k3[$no] = $diare13/$total;
 
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBuah") {
         echo $diare14/$total;
         $k3[$no] = $diare14/$total;
 
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBatang") {
         
         $k3[$no] = $diare15/$total;
         echo $k3[$no];
@@ -1809,13 +1796,13 @@ $c3[$not] =  $k31[$not]*$bobot3;
                                                 echo $k31[$not];
     
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit Buah") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBuah") {
     $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBatang") {
     $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
@@ -1978,10 +1965,10 @@ $c3[$not] =  $k31[$not]*$bobot3;
      $c3[$not] =  $k31[$not]*$bobot3;
     }elseif ($datas['bagian_tumbuhan'] == "Semua") {
         $c3[$not] =  $k31[$not]*$bobot3;
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBuah") {
     $c3[$not] =  $k31[$not]*$bobot3;
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBatang") {
 $c3[$not] =  $k31[$not]*$bobot3;
         
     }elseif ($datas['bagian_tumbuhan'] == "Daun") {
@@ -2136,12 +2123,12 @@ $c3[$not] =  $k31[$not]*$bobot3;
         $k3[$no] = $diare13/$total;
 
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBuah") {
         echo $diare14/$total;
         $k3[$no] = $diare14/$total;
 
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBatang") {
         
         $k3[$no] = $diare15/$total;
         echo $k3[$no];
@@ -2315,13 +2302,13 @@ $c3[$not] =  $k31[$not]*$bobot3;
                                                 echo $k31[$not];
     
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBuah") {
     $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBatang") {
     $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
@@ -2485,10 +2472,10 @@ $c3[$not] =  $k31[$not]*$bobot3;
      $c3[$not] =  $k31[$not]*$bobot3;
     }elseif ($datas['bagian_tumbuhan'] == "Semua") {
         $c3[$not] =  $k31[$not]*$bobot3;
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBuah") {
     $c3[$not] =  $k31[$not]*$bobot3;
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBatang") {
 $c3[$not] =  $k31[$not]*$bobot3;
         
     }elseif ($datas['bagian_tumbuhan'] == "Daun") {
@@ -2642,12 +2629,12 @@ $c3[$not] =  $k31[$not]*$bobot3;
         $k3[$no] = $diare13/$total;
 
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBuah") {
         echo $diare14/$total;
         $k3[$no] = $diare14/$total;
 
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBatang") {
         
         $k3[$no] = $diare15/$total;
         echo $k3[$no];
@@ -2821,13 +2808,13 @@ $c3[$not] =  $k31[$not]*$bobot3;
                                                 echo $k31[$not];
     
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBuah") {
     $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBatang") {
     $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
@@ -2991,10 +2978,10 @@ $c3[$not] =  $k31[$not]*$bobot3;
      $c3[$not] =  $k31[$not]*$bobot3;
     }elseif ($datas['bagian_tumbuhan'] == "Semua") {
         $c3[$not] =  $k31[$not]*$bobot3;
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBuah") {
     $c3[$not] =  $k31[$not]*$bobot3;
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBatang") {
 $c3[$not] =  $k31[$not]*$bobot3;
         
     }elseif ($datas['bagian_tumbuhan'] == "Daun") {
@@ -3151,12 +3138,12 @@ $c3[$not] =  $k31[$not]*$bobot3;
         $k3[$no] = $diare13/$total;
 
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBuah") {
         echo $diare14/$total;
         $k3[$no] = $diare14/$total;
 
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBatang") {
         
         $k3[$no] = $diare15/$total;
         echo $k3[$no];
@@ -3202,18 +3189,18 @@ $c3[$not] =  $k31[$not]*$bobot3;
                                                 <?php 
     if ($datas['jenis_tumbuhan'] == "Pohon") {
         echo $diare22/$total;
-        $k4[$no] = $diare23/$total;
+        $k4[$no] = $diare22/$total;
     }elseif ($datas['jenis_tumbuhan'] == "Liana") {
         echo $diare23/$total;
-        $k4[$no] = $diare24/$total;
+        $k4[$no] = $diare23/$total;
     }
     elseif ($datas['jenis_tumbuhan'] == "Herba") {
         echo $diare24/$total;
-        $k4[$no] = $diare25/$total;
+        $k4[$no] = $diare24/$total;
     }
-    elseif ($datas['jenis_tumbuhan'] == "perdu" or $datas['jenis_tumbuhan'] == "Perdu") {
+    elseif ($datas['jenis_tumbuhan'] == "Perdu") {
         echo $diare25/$total;
-        $k4[$no] = $diare26/$total;
+        $k4[$no] = $diare25/$total;
     }
     elseif ($datas['jenis_tumbuhan'] == "Semak") {
         echo $diare26/$total;
@@ -3332,13 +3319,13 @@ $c3[$not] =  $k31[$not]*$bobot3;
                                                 echo $k31[$not];
     
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBuah") {
     $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBatang") {
     $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
@@ -3504,10 +3491,10 @@ $c3[$not] =  $k31[$not]*$bobot3;
      $c3[$not] =  $k31[$not]*$bobot3;
     }elseif ($datas['bagian_tumbuhan'] == "Semua") {
         $c3[$not] =  $k31[$not]*$bobot3;
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBuah") {
     $c3[$not] =  $k31[$not]*$bobot3;
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBatang") {
 $c3[$not] =  $k31[$not]*$bobot3;
         
     }elseif ($datas['bagian_tumbuhan'] == "Daun") {
@@ -3662,12 +3649,12 @@ $c4[$not] =  $k41[$not]*$bobot4;
         $k3[$no] = $diare13/$total;
 
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBuah") {
         echo $diare14/$total;
         $k3[$no] = $diare14/$total;
 
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBatang") {
         
         $k3[$no] = $diare15/$total;
         echo $k3[$no];
@@ -3842,13 +3829,13 @@ $c4[$not] =  $k41[$not]*$bobot4;
                                                 echo $k31[$not];
     
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBuah") {
     $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBatang") {
     $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
@@ -4013,10 +4000,10 @@ $c4[$not] =  $k41[$not]*$bobot4;
      $c3[$not] =  $k31[$not]*$bobot3;
     }elseif ($datas['bagian_tumbuhan'] == "Semua") {
         $c3[$not] =  $k31[$not]*$bobot3;
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBuah") {
     $c3[$not] =  $k31[$not]*$bobot3;
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBatang") {
 $c3[$not] =  $k31[$not]*$bobot3;
         
     }elseif ($datas['bagian_tumbuhan'] == "Daun") {
@@ -4086,9 +4073,8 @@ $c4[$not] =  $k41[$not]*$bobot4;
 
 
 </table>
-                            </div>
-                            <div id="gigi" class="tab-pane fade">
-                                <!-- copras -->
+</div>
+                            <div id="gigi" class="tab-pane">
                                 <h3><center>COPRAS</center></h3>
                                 <hr>
                                 <h4>Matriks</h4>
@@ -4126,8 +4112,8 @@ $c4[$not] =  $k41[$not]*$bobot4;
                                             echo $diare3/$total;
                                             $k1[$no] = $diare3/$total;
                                           }else{
+                                            echo 0;
                                             $k1[$no] = 0;
-                                            echo $k1[$no];
                                           }?>
                                               
                                           </td>
@@ -4152,7 +4138,7 @@ $c4[$not] =  $k41[$not]*$bobot4;
                                                 
                                             }else{
                                                 $k2[$no] = 0;
-                                                echo $k2[$no];
+                                                echo 0;
                                             }?></td>
 
                                             <td>
@@ -4170,12 +4156,12 @@ $c4[$not] =  $k41[$not]*$bobot4;
         $k3[$no] = $diare13/$total;
 
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBuah") {
         echo $diare14/$total;
         $k3[$no] = $diare14/$total;
 
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBatang") {
         
         $k3[$no] = $diare15/$total;
         echo $k3[$no];
@@ -4210,9 +4196,9 @@ $c4[$not] =  $k41[$not]*$bobot4;
         $k3[$no] = $diare21/$total;
         
     }else{
-                                                $k3[$no] = 0;
-                                                echo $k3[$no];
-                                            }
+        echo 0;
+        $k3[$no] = 0;
+    }
                                                  ?>
                                             </td>
 
@@ -4229,7 +4215,7 @@ $c4[$not] =  $k41[$not]*$bobot4;
         echo $diare24/$total;
         $k4[$no] = $diare24/$total;
     }
-    elseif ($datas['jenis_tumbuhan'] == "perdu" or $datas['jenis_tumbuhan'] == "Perdu") {
+    elseif ($datas['jenis_tumbuhan'] == "Perdu") {
         echo $diare25/$total;
         $k4[$no] = $diare25/$total;
     }
@@ -4237,9 +4223,9 @@ $c4[$not] =  $k41[$not]*$bobot4;
         echo $diare26/$total;
         $k4[$no] = $diare26/$total;
     }else{
-                                                $k4[$no] = 0;
-                                                echo $k4[$no];
-                                            }
+        echo 0;
+        $k4[$no] = 0;
+    }
                                                  ?>
                                             </td>    
                                           </tr>
@@ -4265,7 +4251,6 @@ $c4[$not] =  $k41[$not]*$bobot4;
                                     </tbody>
                                     
                                 </table>
-                                
                                 <h4>Normalisasi Matriks</h4>
                                 <hr>
                                 <table class="table table-bordered table-hovered">
@@ -4300,11 +4285,13 @@ $c4[$not] =  $k41[$not]*$bobot4;
                                           }elseif ($datas['cara_pengolahan'] == 'Direbus') {
                                             $k11[$not]=$k1[$not]/$k111;
                                               echo $k11[$not];
-                                          }else{
-                                            $k11[$not]=$k1[$not]/$k111;
-                                              echo $k11[$not];
-                                            
-                                          }?>
+                                          }
+                                          else{
+        
+                                          $k11[$not]=$k1[$not]/$k111;
+                                          echo $k11[$not];
+
+                                            }?>
                                               </td>
 
                                               
@@ -4327,11 +4314,10 @@ $c4[$not] =  $k41[$not]*$bobot4;
 
                                                 echo $k21[$not];
                                             }else{
-                                                $k21[$not]=$k2[$not]/$k211;
+        $k21[$not]=$k2[$not]/$k211;
 
                                                 echo $k21[$not];
-                                                
-                                            }?></td>
+    }?></td>
 
                                               <td>
                                                 <?php 
@@ -4350,13 +4336,13 @@ $c4[$not] =  $k41[$not]*$bobot4;
                                                 echo $k31[$not];
     
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBuah") {
     $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBatang") {
     $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
@@ -4398,10 +4384,9 @@ $c4[$not] =  $k41[$not]*$bobot4;
                                                 echo $k31[$not];
         
     }else{
-        $k31[$not]=$k3[$not]/$k311;
+    $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
-        
     }
                                                  ?>
                                             </td>
@@ -4422,8 +4407,9 @@ $c4[$not] =  $k41[$not]*$bobot4;
     elseif ($datas['jenis_tumbuhan'] == "Herba") {
     
         $k41[$not]=$k4[$not]/$k411;
+        echo $k41[$not];
 
-                                                echo $k41[$not];
+                                                
     }
     elseif ($datas['jenis_tumbuhan'] == "Perdu") {
     
@@ -4437,10 +4423,9 @@ $c4[$not] =  $k41[$not]*$bobot4;
 
                                                 echo $k41[$not];
     }else{
-            $k41[$not]=$k4[$not]/$k411;
+        $k41[$not]=$k4[$not]/$k411;
 
                                                 echo $k41[$not];
-        
     }
                                                  ?>
                                             </td>    
@@ -4452,7 +4437,6 @@ $c4[$not] =  $k41[$not]*$bobot4;
                                                                            
                                     </tbody>
                                 </table>
-                                
                                 <h4>Normalisasi Bobot</h4>
                                 <hr>
                                 <table class="table table-bordered table-hovered">
@@ -4477,6 +4461,7 @@ $c4[$not] =  $k41[$not]*$bobot4;
                                             $c2 = array();
                                             $c3 = array();
                                             $c4 = array();
+                                            $benefit = array();
                                             
                                             $sql = "SELECT * FROM tumbuhan_obat where khasiat = 'Sakit Gigi'";
 
@@ -4493,10 +4478,8 @@ $c4[$not] =  $k41[$not]*$bobot4;
                                               
                                           }elseif ($datas['cara_pengolahan'] == 'Direbus') {
                                             $c1[$not] =  $k11[$not]*$bobot1;
-                                              
                                           }else{
-                                            $c1[$not] =  $k11[$not]*$bobot1;
-                                            
+                                          $c1[$not] =  $k11[$not]*$bobot1;
                                           }
                                               
 
@@ -4514,9 +4497,8 @@ $c4[$not] =  $k41[$not]*$bobot4;
                                             }elseif ($datas['cara_penggunaan'] == "Dikumur") {
                                                 $c2[$not] =  $k21[$not]*$bobot2;
                                             }else{
-                                                $c2[$not] =  $k21[$not]*$bobot2;
-                                                
-                                            }
+                                                  $c2[$not] =  $k21[$not]*$bobot2;
+                                          }
 
                                               
                                                 if ($datas['bagian_tumbuhan'] == "Akar" ) {
@@ -4525,10 +4507,10 @@ $c4[$not] =  $k41[$not]*$bobot4;
      $c3[$not] =  $k31[$not]*$bobot3;
     }elseif ($datas['bagian_tumbuhan'] == "Semua") {
         $c3[$not] =  $k31[$not]*$bobot3;
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBuah") {
     $c3[$not] =  $k31[$not]*$bobot3;
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBatang") {
 $c3[$not] =  $k31[$not]*$bobot3;
         
     }elseif ($datas['bagian_tumbuhan'] == "Daun") {
@@ -4549,8 +4531,8 @@ $c3[$not] =  $k31[$not]*$bobot3;
     }elseif ($datas['bagian_tumbuhan'] == "Buah") {
     $c3[$not] =  $k31[$not]*$bobot3;
     }else{
-    $c3[$not] =  $k31[$not]*$bobot3;    
-    }
+    $c3[$not] =  $k31[$not]*$bobot3;
+                                          }
                                             
 
                                             
@@ -4558,16 +4540,15 @@ $c3[$not] =  $k31[$not]*$bobot3;
         $c4[$not] =  $k41[$not]*$bobot4;
     }elseif ($datas['jenis_tumbuhan'] == "Liana") {
     $c4[$not] =  $k41[$not]*$bobot4;}
-
     elseif ($datas['jenis_tumbuhan'] == "Herba") {
         $c4[$not] =  $k41[$not]*$bobot4;}
     elseif ($datas['jenis_tumbuhan'] == "Perdu") {
     $c4[$not] =  $k41[$not]*$bobot4;}
     elseif ($datas['jenis_tumbuhan'] == "Semak") {
     $c4[$not] =  $k41[$not]*$bobot4;
-}else{
-    $c4[$not] =  $k41[$not]*$bobot4;    
-}
+    }else{
+    $c4[$not] =  $k41[$not]*$bobot4;
+    }
                                             
                                                  $benefit[$not] = $c1[$not]+$c2[$not]+$c3[$not]+$c4[$not]; 
                                             
@@ -4582,10 +4563,14 @@ $c3[$not] =  $k31[$not]*$bobot3;
                                 <td><?php echo number_format($c2[$noti],4); ?></td>
                                 <td><?php echo number_format($c3[$noti],4); ?></td>
                                 <td><?php echo number_format($c4[$noti],4); ?></td>
+                                <td><?php echo $benefit[$noti]; ?></td>
                                 <td><?php echo number_format($benefit[$noti],4); ?></td>
-                                <td><?php echo number_format($benefit[$noti],4); ?></td>
-                                <td><?php echo number_format(($benefit[$noti]/max($benefit))*100, 2);
-                                $pi[$noti] = ($benefit[$noti]/max($benefit))*100;  ?>%</td>
+                                <td><?php 
+                                $pi[$noti] = ($benefit[$noti]/max($benefit))*100;
+                                echo number_format($pi[$noti], 2);
+                                      ?>%</td>
+                                      <td><?php echo $benefit[$noti] ?></td>
+                                      <td><?php echo max($benefit) ?></td>
                             </tr>
                         <?php  
                         $ranking = "update tumbuhan_obat SET qi = '$benefit[$noti]', pi = '$pi[$noti]' where id_tumbuhan ='$datas[id_tumbuhan]'";
@@ -4595,9 +4580,7 @@ $c3[$not] =  $k31[$not]*$bobot3;
                     } ?>
                                 
                             </tbody>
-
-
-</table>
+                            </table>
                             </div>
 
                             <div id="cacingan" class="tab-pane">
@@ -4683,12 +4666,12 @@ $c3[$not] =  $k31[$not]*$bobot3;
         $k3[$no] = $diare13/$total;
 
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBuah") {
         echo $diare14/$total;
         $k3[$no] = $diare14/$total;
 
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBatang") {
         
         $k3[$no] = $diare15/$total;
         echo $k3[$no];
@@ -4862,13 +4845,13 @@ $c3[$not] =  $k31[$not]*$bobot3;
                                                 echo $k31[$not];
     
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBuah") {
     $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
     
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBatang") {
     $k31[$not]=$k3[$not]/$k311;
 
                                                 echo $k31[$not];
@@ -5032,10 +5015,10 @@ $c3[$not] =  $k31[$not]*$bobot3;
      $c3[$not] =  $k31[$not]*$bobot3;
     }elseif ($datas['bagian_tumbuhan'] == "Semua") {
         $c3[$not] =  $k31[$not]*$bobot3;
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit buah") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBuah") {
     $c3[$not] =  $k31[$not]*$bobot3;
         
-    }elseif ($datas['bagian_tumbuhan'] == "Kulit Batang") {
+    }elseif ($datas['bagian_tumbuhan'] == "KulitBatang") {
 $c3[$not] =  $k31[$not]*$bobot3;
         
     }elseif ($datas['bagian_tumbuhan'] == "Daun") {

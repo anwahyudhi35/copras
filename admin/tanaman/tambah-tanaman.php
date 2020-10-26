@@ -53,10 +53,9 @@ session_start();
 
             <!-- Page Content Holder -->
             <div id="content">
-
+            
                 <nav class="navbar navbar-default">
-                    <div class="container-fluid">
-
+                  <div class="container">
                         <div class="navbar-header">
                             <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
                                 <i class="glyphicon glyphicon-align-left"></i>
@@ -93,6 +92,7 @@ session_start();
                 -->
                   
                 <div class="panel panel-body">
+                  <div class="col-md-6 col-md-offset-3 text-center">
                   <form class="form" action="menanam.php" method="POST" enctype="multipart/form-data">
                   	<div class="form-group">
                   		<label>Nama Tumbuhan</label>
@@ -114,8 +114,8 @@ session_start();
                         <option value="Akar">Akar</option>
                         <option value="Umbi">Umbi</option>
                         <option value="Semua">Semua</option>
-                        <option value="Kulit Buah">Kulit Buah</option>
-                        <option value="Kulit Batang">Kulit Batang</option>
+                        <option value="KulitBuah">Kulit Buah</option>
+                        <option value="KulitBatang">Kulit Batang</option>
                         <option value="Daun">Daun</option>
                         <option value="Batang">Batang</option>
                         <option value="Getah">Getah</option>
@@ -164,18 +164,23 @@ session_start();
                       <textarea name="resep" cols="60" rows="10" class="form-control"></textarea>  
                     </div>
                     <div class="form-group">
-                      <label> gambar </label>
-                      <input type="file" name="gambar" class="form-control">
+
+                      <label> Gambar </label>
+                      <input type="file" name="gambar"  id="gambar" class="form-control" onchange="fileInfo()">
+                      <label> Ukuran File Gambar </label>
+                      <input class="form-control" type="text" id="gambarSize" >
+                      <label>Jenis File Gambar</label>
+                      <input class="form-control" type="text" id="gambarType">
                     </div>
                   	<div class="form-group">
 							<input type="reset" required name="Reset" class="btn btn-warning pull-right btn-fill"> 
-							<input type="submit" required name="nanam" value = "Tambah" class="btn btn-success btn-fill" onclick="return confirm('Apa anda yakin dengan Penambahan data Tumbuhan?');">
+							<input type="submit" required name="nanam" value = "Tambah" class="btn btn-success btn-fill pull-left" onclick="return confirm('Apa anda yakin dengan Penambahan data Tumbuhan?');">
 				</div>
                   </form>
         	
                   
                 
-
+</div>  
                 </div>
         </div>
 
@@ -194,6 +199,17 @@ session_start();
                      $('#sidebar').toggleClass('active');
                  });
              });
+         </script>
+         <script>
+              function fileInfo(){
+                var filename = document.getElementById('gambar').files[0].name;
+                var filesize = document.getElementById('gambar').files[0].size;
+                var filetype = document.getElementById('gambar').files[0].type;
+
+                document.getElementById("gambarSize").value = Math.round(filesize/1024) +" KB";
+                document.getElementById("gambarType").value = filetype;
+                
+              }
          </script>
     </body>
 </html>

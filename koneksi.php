@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "nnew";
+$dbname = "copras";
 
 $dbh = new mysqli($servername, $username, $password, $dbname);
 

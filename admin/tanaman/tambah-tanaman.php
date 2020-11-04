@@ -167,10 +167,7 @@ session_start();
 
                       <label> Gambar </label>
                       <input type="file" name="gambar"  id="gambar" class="form-control" onchange="fileInfo()">
-                      <label> Ukuran File Gambar </label>
-                      <input class="form-control" type="text" id="gambarSize" >
-                      <label>Jenis File Gambar</label>
-                      <input class="form-control" type="text" id="gambarType">
+                      <label>file png/jpg dan ukuran maksimal 2mb </label><br>
                     </div>
                   	<div class="form-group">
 							<input type="reset" required name="Reset" class="btn btn-warning pull-right btn-fill"> 
@@ -206,8 +203,15 @@ session_start();
                 var filesize = document.getElementById('gambar').files[0].size;
                 var filetype = document.getElementById('gambar').files[0].type;
 
-                document.getElementById("gambarSize").value = Math.round(filesize/1024) +" KB";
-                document.getElementById("gambarType").value = filetype;
+                if (filetype == 'image/png' || filetype == 'image/jpeg') {
+                  if (filesize <= 2000000) {
+                  alert('File bisa di upload');
+                  }else{
+                  alert('Maaf, Ukuran gambar yang diupload tidak boleh lebih dari 2MB');
+                  }
+                }else{
+                  alert('Maaf, Tipe gambar yang diupload harus JPG / JPEG / PNG.');
+                }
                 
               }
          </script>

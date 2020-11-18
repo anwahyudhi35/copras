@@ -85,11 +85,6 @@ session_start();
                     <h2>Tambah Data Tanaman</h2>
                 </div>
               </center>
-                <!-- 
-                - disini pake perulangan dari database, tapi databasenya harus diubah agar bisa manggil dari database
-                = dan juga formnya akan nambahkan gambar yang diperlukan jika perlu
-                - gambar diedit diluar biar ukurannya seragam
-                -->
                   
                 <div class="panel panel-body">
                   <div class="col-md-6 col-md-offset-3 text-center">

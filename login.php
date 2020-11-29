@@ -24,7 +24,7 @@
     <div class="login-clean">
         <form method="post" action="login-proses.php">
             <h2 class="sr-only">Login Form</h2>
-           <div class="illustration"><img src="gambar/pohon.svg" class="img-responsive img-circle" > </div>
+           <div class="illustration"><img src="gambar/sirih.jpg" class="img-responsive img-circle" > </div>
             <div class="form-group"><input class="form-control" placeholder="Username" name="username" type="username" required ></div>
             <div class="form-group"><input class="form-control" placeholder="Password" name="password" type="password" required ></div>
             <div class="form-group"><button class="btn btn-success btn-block" type="submit">Log In</button></div></form>

@@ -28,8 +28,6 @@ foreach ($_POST['guna'] as $gunawan) {
                         }
                       }
 
-$atas = max($rangking);
-$bawah = min($rangking);
 $jumlah = count($rangking);
 rsort($rangking);
 
